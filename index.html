@@ -48,6 +48,70 @@
         },
       };
     </script>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="MaxSolving : Développement Web & Automation IA. Création de sites web sur mesure, solutions d'automatisation intelligente, chatbots WhatsApp, workflows n8n. Basé en Tunisie, services internationaux."
+    />
+    <meta
+      name="keywords"
+      content="développement web, automation IA, chatbot WhatsApp, n8n, WordPress, React, Tunisie, agence digitale, site e-commerce"
+    />
+    <meta name="author" content="MaxSolving" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://maxsolving.com/" />
+    <meta
+      property="og:title"
+      content="MaxSolving | Développement Web & Automation IA"
+    />
+    <meta
+      property="og:description"
+      content="Solutions digitales innovantes pour propulser votre entreprise. Sites web sur mesure, automation IA, chatbots intelligents."
+    />
+    <meta
+      property="og:image"
+      content="https://maxsolving.com/img/og-image.png"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://maxsolving.com/" />
+    <meta
+      property="twitter:title"
+      content="MaxSolving | Développement Web & Automation IA"
+    />
+    <meta
+      property="twitter:description"
+      content="Transformez votre vision en réalité digitale avec nos solutions avancées."
+    />
+    <meta
+      property="twitter:image"
+      content="https://maxsolving.com/img/twitter-image.png"
+    />
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MaxSolving",
+        "description": "Agence de développement web et d'automatisation IA",
+        "url": "https://maxsolving.com",
+        "logo": "https://maxsolving.com/img/logo2.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "TN"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "contact@maxsolving.com"
+        }
+      }
+    </script>
   </head>
   <body class="antialiased selection:bg-primary selection:text-black">
     <!-- Three.js Background -->
@@ -386,7 +450,7 @@
                 </p>
                 <ul class="text-gray-500 text-xs space-y-1">
                   <li>✓ Chatbots WhatsApp/Email</li>
-                  <li>✓ Workflows n8n & Zapier</li>
+                  <li>✓ Workflows n8n</li>
                   <li>✓ Synchronisation CRM</li>
                 </ul>
               </div>
@@ -1124,8 +1188,7 @@
                     CRM & Calendriers
                   </li>
                   <li class="flex items-center">
-                    <span class="text-secondary mr-2">▹</span> Workflows n8n &
-                    Zapier
+                    <span class="text-secondary mr-2">▹</span> Workflows n8n
                   </li>
                 </ul>
                 <button
@@ -1143,130 +1206,1316 @@
       <!-- ================= PAGE PORTFOLIO ================= -->
       <section id="portfolio" class="page-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div class="text-center mb-12">
+          <div class="text-center mb-16">
             <h2 class="text-4xl font-bold text-white font-tech mb-4">
-              NOS <span class="text-primary">RÉALISATIONS</span>
+              <span class="text-primary">PORTFOLIO</span> D'EXCELLENCE
             </h2>
-            <p class="text-gray-400">
-              Découvrez comment nous avons aidé d'autres entreprises à se
-              démarquer.
+            <p class="text-gray-400 max-w-2xl mx-auto">
+              +15 projets livrés avec succès • Satisfaction client 98%
             </p>
+
+            <!-- Filtres par technologie -->
+            <div class="flex flex-wrap justify-center gap-3 mt-8">
+              <button
+                class="filter-btn active px-4 py-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-black transition-all"
+                data-filter="all"
+              >
+                Tous (15)
+              </button>
+              <button
+                class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 hover:border-green-500 hover:text-green-400 transition-all"
+                data-filter="wordpress"
+              >
+                WordPress (7)
+              </button>
+              <button
+                class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 hover:border-blue-500 hover:text-blue-400 transition-all"
+                data-filter="html"
+              >
+                HTML/CSS (6)
+              </button>
+              <button
+                class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 hover:border-purple-500 hover:text-purple-400 transition-all"
+                data-filter="shopify"
+              >
+                Shopify (1)
+              </button>
+              <button
+                class="filter-btn px-4 py-2 rounded-full border border-gray-700 text-gray-400 hover:border-orange-500 hover:text-orange-400 transition-all"
+                data-filter="nextjs"
+              >
+                Next.js (1)
+              </button>
+            </div>
           </div>
 
-          <!-- Swiper -->
-          <div class="swiper mySwiper w-full h-[500px]">
-            <div class="swiper-wrapper">
-              <!-- Project 1 -->
+          <!-- Statistiques impressionnantes -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div class="text-center glass p-4 rounded-xl">
+              <div class="text-3xl font-bold text-primary font-tech">15+</div>
+              <div class="text-gray-400 text-sm">Projets livrés</div>
+            </div>
+            <div class="text-center glass p-4 rounded-xl">
+              <div class="text-3xl font-bold text-secondary font-tech">98%</div>
+              <div class="text-gray-400 text-sm">Satisfaction client</div>
+            </div>
+            <div class="text-center glass p-4 rounded-xl">
+              <div class="text-3xl font-bold text-green-500 font-tech">30%</div>
+              <div class="text-gray-400 text-sm">Augmentation CA moyenne</div>
+            </div>
+            <div class="text-center glass p-4 rounded-xl">
+              <div class="text-3xl font-bold text-pink-500 font-tech">24h</div>
+              <div class="text-gray-400 text-sm">Support réponse max</div>
+            </div>
+          </div>
+
+          <!-- Grille des projets -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+            id="projects-grid"
+          >
+            <!-- Projet 1: EFCVC -->
+            <div class="project-card group" data-category="html premium">
               <div
-                class="swiper-slide glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row"
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
               >
-                <div
-                  class="w-full md:w-1/2 bg-gray-800 h-64 md:h-full flex items-center justify-center text-gray-600"
-                >
-                  <span class="font-tech text-4xl">EFCVC</span>
-                  <!-- Placeholder Image -->
+                <!-- Badge Premium -->
+                <div class="absolute top-4 left-4 z-10">
+                  <span
+                    class="bg-gradient-to-r from-yellow-500 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold"
+                  >
+                    ⭐ PROJET PREMIUM
+                  </span>
                 </div>
-                <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold text-white mb-2 font-tech">
-                    EFCVC - Climatisation
-                  </h3>
-                  <div class="flex gap-2 mb-4">
+
+                <!-- Image -->
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-4xl text-white/90">EFCVC</span>
+                  </div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+                  ></div>
+                </div>
+
+                <!-- Contenu -->
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        EFCVC
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        E-commerce climatisation industrielle
+                      </p>
+                    </div>
+                    <a
+                      href="https://efcvc.com"
+                      target="_blank"
+                      class="text-primary hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <!-- Technologies -->
+                  <div class="flex flex-wrap gap-2 mb-4">
                     <span
                       class="px-2 py-1 bg-primary/20 text-primary text-xs rounded"
-                      >HTML</span
+                      >HTML5</span
                     >
                     <span
                       class="px-2 py-1 bg-primary/20 text-primary text-xs rounded"
-                      >Tailwind</span
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-primary/20 text-primary text-xs rounded"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded"
+                      >SEO</span
                     >
                   </div>
-                  <p class="text-gray-400 mb-6">
-                    Site e-commerce complet pour un expert en réfrigération et
-                    froid industriel. Design technique et épuré.
-                  </p>
-                  <a
-                    href="#"
-                    class="btn-neon inline-block text-center w-40 py-2 border border-white/20 hover:bg-white hover:text-black transition-colors rounded"
-                    >Voir le site</a
-                  >
-                </div>
-              </div>
 
-              <!-- Project 2 -->
-              <div
-                class="swiper-slide glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row"
-              >
-                <div
-                  class="w-full md:w-1/2 bg-gray-800 h-64 md:h-full flex items-center justify-center text-gray-600"
-                >
-                  <span class="font-tech text-4xl">WORKMAN</span>
-                </div>
-                <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold text-white mb-2 font-tech">
-                    WORKMAN
-                  </h3>
-                  <div class="flex gap-2 mb-4">
-                    <span
-                      class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded"
-                      >WordPress</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded"
-                      >Elementor</span
-                    >
-                  </div>
-                  <p class="text-gray-400 mb-6">
-                    Site vitrine pour une marque de vêtements professionnels et
-                    équipements de sécurité.
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site e-commerce complet pour expert en réfrigération et
+                    froid industriel.
                   </p>
-                  <a
-                    href="#"
-                    class="btn-neon inline-block text-center w-40 py-2 border border-white/20 hover:bg-white hover:text-black transition-colors rounded"
-                    >Voir le site</a
-                  >
-                </div>
-              </div>
 
-              <!-- Project 3 -->
-              <div
-                class="swiper-slide glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row"
-              >
-                <div
-                  class="w-full md:w-1/2 bg-gray-800 h-64 md:h-full flex items-center justify-center text-gray-600"
-                >
-                  <span class="font-tech text-4xl">ZITOUNA</span>
-                </div>
-                <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
-                  <h3 class="text-2xl font-bold text-white mb-2 font-tech">
-                    Zitouna Gourmet
-                  </h3>
-                  <div class="flex gap-2 mb-4">
-                    <span
-                      class="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded"
-                      >WordPress</span
+                  <!-- Boutons d'action -->
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://efcvc.com"
+                      target="_blank"
+                      class="flex-1 text-center border border-primary text-primary hover:bg-primary hover:text-black py-2 rounded transition-colors"
                     >
-                    <span
-                      class="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded"
-                      >Astra</span
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('efcvc')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-primary hover:text-primary py-2 rounded transition-colors"
                     >
+                      Détails
+                    </button>
                   </div>
-                  <p class="text-gray-400 mb-6">
-                    Site moderne pour restaurant avec système de réservation de
-                    table en ligne et menu interactif.
-                  </p>
-                  <a
-                    href="#"
-                    class="btn-neon inline-block text-center w-40 py-2 border border-white/20 hover:bg-white hover:text-black transition-colors rounded"
-                    >Voir le site</a
-                  >
                 </div>
               </div>
             </div>
-            <!-- Navigation Btns -->
-            <div class="swiper-pagination"></div>
+
+            <!-- Projet 2: VITA CAST -->
+            <div class="project-card group" data-category="html">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-4xl text-white/90"
+                      >VITA CAST</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        VITA CAST
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Clinique médicale - Site vitrine
+                      </p>
+                    </div>
+                    <a
+                      href="https://vita-cast.com.tn"
+                      target="_blank"
+                      class="text-blue-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded"
+                      >HTML5</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded"
+                      >AOS</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site vitrine pour clinique médicale avec animations et
+                    design moderne.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://vita-cast.com.tn"
+                      target="_blank"
+                      class="flex-1 text-center border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('vita-cast')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-blue-500 hover:text-blue-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 3: ACTUMOTO -->
+            <div class="project-card group" data-category="html">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-3xl text-white/90"
+                      >ACTUMOTO</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        ACTUMOTO
+                      </h3>
+                      <p class="text-gray-400 text-sm">Concessionnaire motos</p>
+                    </div>
+                    <a
+                      href="https://actumoto.tn"
+                      target="_blank"
+                      class="text-red-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded"
+                      >HTML5</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded"
+                      >Tailwind CSS</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded"
+                      >JavaScript</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site vitrine pour concessionnaire de motos avec galerie et
+                    contact.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://actumoto.tn"
+                      target="_blank"
+                      class="flex-1 text-center border border-red-500 text-red-400 hover:bg-red-500 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('actumoto')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-red-500 hover:text-red-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 4: WORKMAN -->
+            <div class="project-card group" data-category="wordpress ecommerce">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-blue-600/20 to-blue-400/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-3xl text-white/90"
+                      >WORKMAN</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        WORKMAN
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Vêtements professionnels
+                      </p>
+                    </div>
+                    <a
+                      href="https://www.workman-stid.com"
+                      target="_blank"
+                      class="text-blue-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-blue-600/20 text-blue-400 text-xs rounded"
+                      >WordPress</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-blue-600/20 text-blue-400 text-xs rounded"
+                      >WooCommerce</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-blue-600/20 text-blue-400 text-xs rounded"
+                      >Elementor</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Boutique e-commerce pour vêtements et équipements
+                    professionnels.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://www.workman-stid.com"
+                      target="_blank"
+                      class="flex-1 text-center border border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('workman')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-blue-600 hover:text-blue-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 5: ADENIUM -->
+            <div class="project-card group" data-category="wordpress">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-green-500/20 to-teal-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-3xl text-white/90"
+                      >ADENIUM</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        ADENIUM
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Entreprise de services
+                      </p>
+                    </div>
+                    <a
+                      href="https://adenium.tn"
+                      target="_blank"
+                      class="text-green-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-green-600/20 text-green-400 text-xs rounded"
+                      >WordPress</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-green-600/20 text-green-400 text-xs rounded"
+                      >Elementor</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-green-600/20 text-green-400 text-xs rounded"
+                      >SEO</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site vitrine corporate avec présentation des services et
+                    contact.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://adenium.tn"
+                      target="_blank"
+                      class="flex-1 text-center border border-green-600 text-green-400 hover:bg-green-600 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('adenium')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-green-600 hover:text-green-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 6: ZITOUNA GOURMET -->
+            <div class="project-card group" data-category="wordpress">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-orange-500/20 to-yellow-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-2xl text-white/90"
+                      >ZITOUNA GOURMET</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        Zitouna Gourmet
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Restaurant & réservation
+                      </p>
+                    </div>
+                    <a
+                      href="https://zitouna-gourmet.free.nf"
+                      target="_blank"
+                      class="text-orange-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-orange-600/20 text-orange-400 text-xs rounded"
+                      >WordPress</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-orange-600/20 text-orange-400 text-xs rounded"
+                      >Elementor</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-orange-600/20 text-orange-400 text-xs rounded"
+                      >Réservation</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site de restaurant avec menu interactif et système de
+                    réservation.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://zitouna-gourmet.free.nf"
+                      target="_blank"
+                      class="flex-1 text-center border border-orange-600 text-orange-400 hover:bg-orange-600 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('zitouna')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-orange-600 hover:text-orange-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 7: DIRECT SERRURE -->
+            <div class="project-card group" data-category="html premium">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="absolute top-4 left-4 z-10">
+                  <span
+                    class="bg-gradient-to-r from-yellow-500 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold"
+                  >
+                    ⭐ 3D INTÉRACTIF
+                  </span>
+                </div>
+
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-2xl text-white/90"
+                      >DIRECT SERRURE</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        Direct Serrure
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Serrurier - Site vitrine 3D
+                      </p>
+                    </div>
+                    <a
+                      href="https://direct-serrure.fr"
+                      target="_blank"
+                      class="text-purple-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-purple-600/20 text-purple-400 text-xs rounded"
+                      >HTML5</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-purple-600/20 text-purple-400 text-xs rounded"
+                      >Tailwind</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-purple-600/20 text-purple-400 text-xs rounded"
+                      >Three.js</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-purple-600/20 text-purple-400 text-xs rounded"
+                      >JavaScript</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site avec animations 3D pour serrurier professionnel.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://direct-serrure.fr"
+                      target="_blank"
+                      class="flex-1 text-center border border-purple-600 text-purple-400 hover:bg-purple-600 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('direct-serrure')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-purple-600 hover:text-purple-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 8: BFPETFOOD -->
+            <div class="project-card group" data-category="shopify ecommerce">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-green-600/20 to-lime-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-3xl text-white/90"
+                      >BFPETFOOD</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        BF Pet Food
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Nourriture pour animaux
+                      </p>
+                    </div>
+                    <a
+                      href="https://bfpetfood.shop"
+                      target="_blank"
+                      class="text-green-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-green-700/20 text-green-400 text-xs rounded"
+                      >Shopify</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-green-700/20 text-green-400 text-xs rounded"
+                      >Shop Pay</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-green-700/20 text-green-400 text-xs rounded"
+                      >E-commerce</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Boutique Shopify pour nourriture premium pour animaux.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://bfpetfood.shop"
+                      target="_blank"
+                      class="flex-1 text-center border border-green-700 text-green-400 hover:bg-green-700 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('bfpetfood')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-green-700 hover:text-green-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 9: KILOWATT INTERNATIONAL -->
+            <div class="project-card group" data-category="wordpress premium">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="absolute top-4 left-4 z-10">
+                  <span
+                    class="bg-gradient-to-r from-yellow-500 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold"
+                  >
+                    ⭐ INTERNATIONAL
+                  </span>
+                </div>
+
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-yellow-600/20 to-orange-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-2xl text-white/90"
+                      >KILOWATT</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        Kilowatt International
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Énergie solaire multinationale
+                      </p>
+                    </div>
+                    <a
+                      href="https://kilowatt-international.com"
+                      target="_blank"
+                      class="text-yellow-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-yellow-600/20 text-yellow-400 text-xs rounded"
+                      >WordPress</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-yellow-600/20 text-yellow-400 text-xs rounded"
+                      >Divi</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-yellow-600/20 text-yellow-400 text-xs rounded"
+                      >Multi-langue</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-yellow-600/20 text-yellow-400 text-xs rounded"
+                      >SEO</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site corporate multinational avec sections FR/EN pour
+                    énergie solaire.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://kilowatt-international.com"
+                      target="_blank"
+                      class="flex-1 text-center border border-yellow-600 text-yellow-400 hover:bg-yellow-600 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('kilowatt')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-yellow-600 hover:text-yellow-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 10: ANDRE BPO -->
+            <div class="project-card group" data-category="wordpress">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-indigo-500/20 to-blue-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-3xl text-white/90"
+                      >ANDRE BPO</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        André BPO
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Business Process Outsourcing
+                      </p>
+                    </div>
+                    <a
+                      href="https://www.andre-bpo.fr"
+                      target="_blank"
+                      class="text-indigo-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-indigo-600/20 text-indigo-400 text-xs rounded"
+                      >WordPress</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-indigo-600/20 text-indigo-400 text-xs rounded"
+                      >Elementor</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-indigo-600/20 text-indigo-400 text-xs rounded"
+                      >Corporate</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site corporate pour société de Business Process Outsourcing.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://www.andre-bpo.fr"
+                      target="_blank"
+                      class="flex-1 text-center border border-indigo-600 text-indigo-400 hover:bg-indigo-600 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('andre-bpo')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-indigo-600 hover:text-indigo-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 11: AMINE NOURI PORTFOLIO -->
+            <div class="project-card group" data-category="html">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-2xl text-white/90"
+                      >AMINE NOURI</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        Portfolio Amine Nouri
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Portfolio développeur web
+                      </p>
+                    </div>
+                    <a
+                      href="https://aminenouriwebdev.github.io/portfolio"
+                      target="_blank"
+                      class="text-cyan-400 hover:text-white transition-colors"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-cyan-600/20 text-cyan-400 text-xs rounded"
+                      >HTML5</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-cyan-600/20 text-cyan-400 text-xs rounded"
+                      >CSS3</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-cyan-600/20 text-cyan-400 text-xs rounded"
+                      >JavaScript</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Portfolio personnel pour développeur web avec projets et
+                    compétences.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <a
+                      href="https://aminenouriwebdev.github.io/portfolio"
+                      target="_blank"
+                      class="flex-1 text-center border border-cyan-600 text-cyan-400 hover:bg-cyan-600 hover:text-white py-2 rounded transition-colors"
+                    >
+                      Visiter
+                    </a>
+                    <button
+                      onclick="openProjectModal('amine-nouri')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-cyan-600 hover:text-cyan-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 12: MANNEQUIN BELGE -->
+            <div class="project-card group" data-category="html">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-pink-500/20 to-rose-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-2xl text-white/90"
+                      >MANNEQUIN BELGE</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        Mannequin Belge
+                      </h3>
+                      <p class="text-gray-400 text-sm">Agence de mannequins</p>
+                    </div>
+                    <a
+                      href="#"
+                      onclick="return false;"
+                      class="text-pink-400 hover:text-white transition-colors opacity-50 cursor-not-allowed"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-pink-600/20 text-pink-400 text-xs rounded"
+                      >HTML5</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-pink-600/20 text-pink-400 text-xs rounded"
+                      >Tailwind</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-pink-600/20 text-pink-400 text-xs rounded"
+                      >GSAP</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-pink-600/20 text-pink-400 text-xs rounded"
+                      >Three.js</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site avec animations avancées pour agence de mannequins.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <button
+                      class="flex-1 text-center border border-pink-600 text-pink-400 py-2 rounded opacity-50 cursor-not-allowed"
+                    >
+                      En construction
+                    </button>
+                    <button
+                      onclick="openProjectModal('mannequin-belge')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-pink-600 hover:text-pink-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 13: EXCEL DU ZERO -->
+            <div class="project-card group" data-category="nextjs">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-gray-700/20 to-gray-900/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-2xl text-white/90"
+                      >EXCEL DU ZERO</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        Excel du Zéro
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Formation Excel en ligne
+                      </p>
+                    </div>
+                    <a
+                      href="#"
+                      onclick="return false;"
+                      class="text-gray-400 hover:text-white transition-colors opacity-50 cursor-not-allowed"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-gray-700/20 text-gray-400 text-xs rounded"
+                      >Next.js</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-gray-700/20 text-gray-400 text-xs rounded"
+                      >React</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-gray-700/20 text-gray-400 text-xs rounded"
+                      >Tailwind CSS</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Plateforme de formation Excel avec cours interactifs.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <button
+                      class="flex-1 text-center border border-gray-600 text-gray-400 py-2 rounded opacity-50 cursor-not-allowed"
+                    >
+                      En construction
+                    </button>
+                    <button
+                      onclick="openProjectModal('excel-du-zero')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 14: DEPOSARK -->
+            <div class="project-card group" data-category="wordpress">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-teal-500/20 to-emerald-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-3xl text-white/90"
+                      >DEPOSARK</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        DepoSark
+                      </h3>
+                      <p class="text-gray-400 text-sm">
+                        Entreprise de services
+                      </p>
+                    </div>
+                    <a
+                      href="#"
+                      onclick="return false;"
+                      class="text-teal-400 hover:text-white transition-colors opacity-50 cursor-not-allowed"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-teal-600/20 text-teal-400 text-xs rounded"
+                      >WordPress</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-teal-600/20 text-teal-400 text-xs rounded"
+                      >Elementor</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site vitrine pour entreprise de services divers.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <button
+                      class="flex-1 text-center border border-teal-600 text-teal-400 py-2 rounded opacity-50 cursor-not-allowed"
+                    >
+                      En construction
+                    </button>
+                    <button
+                      onclick="openProjectModal('deposark')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-teal-600 hover:text-teal-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 15: VOYANTE MEDIUM -->
+            <div class="project-card group" data-category="html">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-purple-700/20 to-violet-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-2xl text-white/90"
+                      >VOYANTE MEDIUM</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        Voyante Medium
+                      </h3>
+                      <p class="text-gray-400 text-sm">Service de voyance</p>
+                    </div>
+                    <a
+                      href="#"
+                      onclick="return false;"
+                      class="text-violet-400 hover:text-white transition-colors opacity-50 cursor-not-allowed"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-violet-600/20 text-violet-400 text-xs rounded"
+                      >HTML5</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-violet-600/20 text-violet-400 text-xs rounded"
+                      >Tailwind</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-violet-600/20 text-violet-400 text-xs rounded"
+                      >JavaScript</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site de voyance avec prise de rendez-vous en ligne.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <button
+                      class="flex-1 text-center border border-violet-600 text-violet-400 py-2 rounded opacity-50 cursor-not-allowed"
+                    >
+                      En construction
+                    </button>
+                    <button
+                      onclick="openProjectModal('voyante-medium')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-violet-600 hover:text-violet-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projet 16: ARTISAN SERRURIER VOLTAIRE -->
+            <div class="project-card group" data-category="html">
+              <div
+                class="relative overflow-hidden rounded-xl h-full flex flex-col glass-card"
+              >
+                <div class="h-64 relative flex-grow-0">
+                  <div
+                    class="w-full h-full bg-gradient-to-br from-amber-500/20 to-yellow-500/20 flex items-center justify-center"
+                  >
+                    <span class="font-tech text-xl text-white/90"
+                      >SERRURIER VOLTAIRE</span
+                    >
+                  </div>
+                </div>
+
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-white font-tech">
+                        Artisan Serrurier Voltaire
+                      </h3>
+                      <p class="text-gray-400 text-sm">Service de serrurerie</p>
+                    </div>
+                    <a
+                      href="#"
+                      onclick="return false;"
+                      class="text-amber-400 hover:text-white transition-colors opacity-50 cursor-not-allowed"
+                    >
+                      ↗
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span
+                      class="px-2 py-1 bg-amber-600/20 text-amber-400 text-xs rounded"
+                      >HTML5</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-amber-600/20 text-amber-400 text-xs rounded"
+                      >Tailwind</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-amber-600/20 text-amber-400 text-xs rounded"
+                      >JavaScript</span
+                    >
+                  </div>
+
+                  <p class="text-gray-400 text-sm mb-6">
+                    Site vitrine pour artisan serrurier avec formulaire de
+                    contact.
+                  </p>
+
+                  <div class="flex gap-2 mt-auto">
+                    <button
+                      class="flex-1 text-center border border-amber-600 text-amber-400 py-2 rounded opacity-50 cursor-not-allowed"
+                    >
+                      En construction
+                    </button>
+                    <button
+                      onclick="openProjectModal('serrurier-voltaire')"
+                      class="flex-1 border border-gray-700 text-gray-400 hover:border-amber-600 hover:text-amber-400 py-2 rounded transition-colors"
+                    >
+                      Détails
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="text-center mt-12">
+            <p class="text-gray-400 text-sm mb-4">
+              Certains projets sont en cours de développement ou non disponibles
+              publiquement.
+            </p>
+            <button
+              onclick="router('devis')"
+              class="btn-neon border-2 border-primary text-primary hover:bg-primary hover:text-black px-8 py-4 rounded font-tech font-bold uppercase tracking-widest transition-all"
+            >
+              Lancer mon projet
+            </button>
           </div>
         </div>
       </section>
+      <!-- Modal pour les détails des projets -->
+      <div
+        id="project-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center p-4"
+      >
+        <div
+          class="fixed inset-0 bg-black/80"
+          onclick="closeProjectModal()"
+        ></div>
+
+        <div
+          class="relative bg-bgDark rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto glass border border-white/10"
+        >
+          <button
+            onclick="closeProjectModal()"
+            class="absolute top-4 right-4 text-white hover:text-primary z-10"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <div id="modal-content" class="p-8">
+            <!-- Le contenu sera injecté par JavaScript -->
+          </div>
+        </div>
+      </div>
 
       <!-- ================= PAGE A PROPOS ================= -->
       <section id="about" class="page-section">

@@ -237,3 +237,55 @@ body.menu-open {
     background: #00F0FF !important;
     color: #030014 !important;
 }
+/* Portfolio Animations */
+.project-card {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.filter-btn {
+    transition: all 0.3s ease;
+}
+
+/* Modal Animation */
+#project-modal {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Project Card Hover Effects */
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card:hover .glass-card {
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+}
+
+/* Badge Styles */
+.badge-premium {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+    }
+}
