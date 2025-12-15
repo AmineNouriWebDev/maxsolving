@@ -143,87 +143,92 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
 // === 7. PROJECT MODAL ===
 function openProjectModal(projectId) {
   const modal = document.getElementById('project-modal');
   const modalContent = document.getElementById('modal-content');
   
-  // Project data
-  const projects = {
-    'efcvc': {
-      title: 'EFCVC - Climatisation Industrielle',
-      description: 'Site e-commerce complet pour un expert en réfrigération et froid industriel. Design technique et épuré avec une interface utilisateur optimisée pour la conversion.',
-      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'SEO Avancé'],
-      features: ['Catalogue produits détaillé', 'Panier et paiement sécurisé', 'Formulaire de devis en ligne', 'Optimisation SEO complète'],
-      link: 'https://efcvc.com',
-      results: '+200% de trafic en 3 mois, conversion ×2.5'
-    },
-    'vita-cast': {
-      title: 'VITA CAST - Clinique Médicale',
-      description: 'Site vitrine moderne pour une clinique médicale avec présentation des services, équipe médicale et prise de rendez-vous en ligne.',
-      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'AOS Animations'],
-      features: ['Présentation des services', 'Équipe médicale', 'Formulaire de rendez-vous', 'Blog médical'],
-      link: 'https://vita-cast.com.tn',
-      results: 'Réservations en ligne multipliées par 3'
-    }
-    // Ajoutez les autres projets ici...
-  };
-  
-  const project = projects[projectId] || {
-    title: 'Projet en développement',
-    description: 'Ce projet est actuellement en développement. Contactez-nous pour plus d\'informations.',
-    technologies: ['Technologies en cours'],
-    features: ['Fonctionnalités à venir'],
-    link: '#',
-    results: 'Bientôt disponible'
-  };
-  
-  modalContent.innerHTML = `
-    <div class="space-y-6">
-      <h3 class="text-3xl font-bold text-white font-tech">${project.title}</h3>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <h4 class="text-xl font-bold text-primary mb-3">Description</h4>
-          <p class="text-gray-300">${project.description}</p>
+  // Si le renderer est disponible, l'utiliser
+  if (window.portfolioRenderer) {
+    modalContent.innerHTML = window.portfolioRenderer.renderModalContent(projectId);
+  } else {
+    // Fallback aux données statiques
+    const projects = {
+      'efcvc': {
+        title: 'EFCVC - Climatisation Industrielle',
+        description: 'Site e-commerce complet pour un expert en réfrigération et froid industriel. Design technique et épuré avec une interface utilisateur optimisée pour la conversion.',
+        technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'SEO Avancé'],
+        features: ['Catalogue produits détaillé', 'Panier et paiement sécurisé', 'Formulaire de devis en ligne', 'Optimisation SEO complète'],
+        link: 'https://efcvc.com',
+        results: '+200% de trafic en 3 mois, conversion ×2.5'
+      },
+      'vita-cast': {
+        title: 'VITA CAST - Clinique Médicale',
+        description: 'Site vitrine moderne pour une clinique médicale avec présentation des services, équipe médicale et prise de rendez-vous en ligne.',
+        technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'AOS Animations'],
+        features: ['Présentation des services', 'Équipe médicale', 'Formulaire de rendez-vous', 'Blog médical'],
+        link: 'https://vita-cast.com.tn',
+        results: 'Réservations en ligne multipliées par 3'
+      }
+    };
+    
+    const project = projects[projectId] || {
+      title: 'Projet en développement',
+      description: 'Ce projet est actuellement en développement. Contactez-nous pour plus d\'informations.',
+      technologies: ['Technologies en cours'],
+      features: ['Fonctionnalités à venir'],
+      link: '#',
+      results: 'Bientôt disponible'
+    };
+    
+    modalContent.innerHTML = `
+      <div class="space-y-6">
+        <h3 class="text-3xl font-bold text-white font-tech">${project.title}</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-xl font-bold text-primary mb-3">Description</h4>
+            <p class="text-gray-300">${project.description}</p>
+          </div>
+          
+          <div>
+            <h4 class="text-xl font-bold text-secondary mb-3">Résultats</h4>
+            <p class="text-gray-300">${project.results}</p>
+          </div>
         </div>
         
         <div>
-          <h4 class="text-xl font-bold text-secondary mb-3">Résultats</h4>
-          <p class="text-gray-300">${project.results}</p>
+          <h4 class="text-xl font-bold text-white mb-3">Technologies utilisées</h4>
+          <div class="flex flex-wrap gap-2">
+            ${project.technologies.map(tech => 
+              `<span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">${tech}</span>`
+            ).join('')}
+          </div>
         </div>
-      </div>
-      
-      <div>
-        <h4 class="text-xl font-bold text-white mb-3">Technologies utilisées</h4>
-        <div class="flex flex-wrap gap-2">
-          ${project.technologies.map(tech => 
-            `<span class="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm">${tech}</span>`
-          ).join('')}
+        
+        <div>
+          <h4 class="text-xl font-bold text-white mb-3">Fonctionnalités principales</h4>
+          <ul class="space-y-2">
+            ${project.features.map(feature => 
+              `<li class="flex items-center text-gray-300">
+                <span class="text-primary mr-2">✓</span> ${feature}
+              </li>`
+            ).join('')}
+          </ul>
         </div>
+        
+        ${project.link !== '#' ? `
+          <div class="pt-4 border-t border-white/10">
+            <a href="${project.link}" target="_blank" 
+               class="btn-neon bg-primary text-black px-8 py-3 rounded font-tech font-bold uppercase tracking-widest hover:bg-white transition-colors inline-block">
+              Visiter le site
+            </a>
+          </div>
+        ` : ''}
       </div>
-      
-      <div>
-        <h4 class="text-xl font-bold text-white mb-3">Fonctionnalités principales</h4>
-        <ul class="space-y-2">
-          ${project.features.map(feature => 
-            `<li class="flex items-center text-gray-300">
-              <span class="text-primary mr-2">✓</span> ${feature}
-            </li>`
-          ).join('')}
-        </ul>
-      </div>
-      
-      ${project.link !== '#' ? `
-        <div class="pt-4 border-t border-white/10">
-          <a href="${project.link}" target="_blank" 
-             class="btn-neon bg-primary text-black px-8 py-3 rounded font-tech font-bold uppercase tracking-widest hover:bg-white transition-colors inline-block">
-            Visiter le site
-          </a>
-        </div>
-      ` : ''}
-    </div>
-  `;
+    `;
+  }
   
   modal.classList.remove('hidden');
   modal.classList.add('flex');

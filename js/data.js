@@ -1,0 +1,381 @@
+// data.js - Données des projets
+const projectsData = [
+  {
+    id: 'efcvc',
+    title: 'EFCVC',
+    subtitle: 'E-commerce climatisation industrielle',
+    description: 'Site e-commerce complet pour expert en réfrigération et froid industriel.',
+    longDescription: 'Site e-commerce complet pour un expert en réfrigération et froid industriel. Design technique et épuré avec une interface utilisateur optimisée pour la conversion.',
+    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
+    category: ['html', 'premium'],
+    featured: true,
+    imageDesktop: 'img/projects/efcvc/desktop.png',
+    imageMobile: 'img/projects/efcvc/mobile.png',
+    link: 'https://efcvc.com',
+    badge: '⭐ PREMIUM',
+    badgeColor: 'primary',
+    techColor: 'primary',
+    modalData: {
+      title: 'EFCVC - Climatisation Industrielle',
+      description: 'Site e-commerce complet pour un expert en réfrigération et froid industriel. Design technique et épuré avec une interface utilisateur optimisée pour la conversion.',
+      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'SEO Avancé'],
+      features: ['Catalogue produits détaillé', 'Panier et paiement sécurisé', 'Formulaire de devis en ligne', 'Optimisation SEO complète'],
+      link: 'https://efcvc.com',
+      results: '+200% de trafic en 3 mois, conversion ×2.5'
+    }
+  },
+  {
+    id: 'vita-cast',
+    title: 'VITA CAST',
+    subtitle: 'Clinique médicale - Site vitrine',
+    description: 'Site vitrine pour clinique médicale avec animations et design moderne.',
+    longDescription: 'Site vitrine moderne pour une clinique médicale avec présentation des services, équipe médicale et prise de rendez-vous en ligne.',
+    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'AOS'],
+    category: ['html'],
+    featured: false,
+    imageDesktop: 'img/projects/vitacast/desktop.png',
+    imageMobile: 'img/projects/vitacast/mobile.png',
+    link: 'https://vita-cast.com.tn',
+    badge: '🚀 RÉCENT',
+    badgeColor: 'green-500',
+    techColor: 'blue-500',
+    modalData: {
+      title: 'VITA CAST - Clinique Médicale',
+      description: 'Site vitrine moderne pour une clinique médicale avec présentation des services, équipe médicale et prise de rendez-vous en ligne.',
+      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'AOS Animations'],
+      features: ['Présentation des services', 'Équipe médicale', 'Formulaire de rendez-vous', 'Blog médical'],
+      link: 'https://vita-cast.com.tn',
+      results: 'Réservations en ligne multipliées par 3'
+    }
+  },
+  {
+    id: 'actumoto',
+    title: 'ACTUMOTO',
+    subtitle: 'Concessionnaire motos',
+    description: 'Site vitrine pour concessionnaire de motos avec galerie et contact.',
+    longDescription: 'Site vitrine moderne pour concessionnaire de motos avec galerie interactive et système de contact avancé.',
+    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
+    category: ['html'],
+    featured: true,
+    imageDesktop: 'img/projects/actumoto/desktop.png',
+    link: 'https://actumoto.tn',
+    badge: '🔥 NOUVEAU',
+    badgeColor: 'red-500',
+    techColor: 'red-500',
+    modalData: {
+      title: 'ACTUMOTO - Concessionnaire Moto',
+      description: 'Site vitrine moderne pour concessionnaire de motos avec galerie interactive et système de contact avancé.',
+      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
+      features: ['Galerie interactive', 'Formulaire de contact', 'Présentation des modèles', 'Localisation'],
+      link: 'https://actumoto.tn',
+      results: 'Augmentation des demandes de contact de 150%'
+    }
+  },
+  {
+    id: 'workman',
+    title: 'WORKMAN',
+    subtitle: 'Vêtements professionnels',
+    description: 'Boutique e-commerce pour vêtements et équipements professionnels.',
+    longDescription: 'Site e-commerce WordPress avec WooCommerce pour vêtements professionnels et équipements de travail.',
+    technologies: ['WordPress', 'WooCommerce', 'Elementor'],
+    category: ['wordpress', 'ecommerce'],
+    featured: false,
+    imageDesktop: 'img/projects/workman/desktop.png',
+    link: 'https://www.workman-stid.com',
+    badge: '🛒 E-COMMERCE',
+    badgeColor: 'blue-600',
+    techColor: 'blue-600',
+    modalData: {
+      title: 'WORKMAN - Vêtements Professionnels',
+      description: 'Site e-commerce WordPress avec WooCommerce pour vêtements professionnels et équipements de travail.',
+      technologies: ['WordPress', 'WooCommerce', 'Elementor', 'SEO'],
+      features: ['Catalogue produits', 'Panier e-commerce', 'Paiement sécurisé', 'Gestion des stocks'],
+      link: 'https://www.workman-stid.com',
+      results: 'Ventes en ligne multipliées par 4'
+    }
+  },
+  {
+    id: 'adenium',
+    title: 'ADENIUM',
+    subtitle: 'Entreprise de services',
+    description: 'Site vitrine corporate avec présentation des services et contact.',
+    longDescription: 'Site corporate WordPress pour une entreprise de services avec portfolio et formulaire de contact.',
+    technologies: ['WordPress', 'Elementor', 'SEO'],
+    category: ['wordpress'],
+    featured: false,
+    imageDesktop: 'img/projects/adenium/desktop.png',
+    link: 'https://adenium.tn',
+    badge: '🏢 CORPORATE',
+    badgeColor: 'yellow-600',
+    techColor: 'yellow-600',
+    modalData: {
+      title: 'ADENIUM - Entreprise de Services',
+      description: 'Site corporate WordPress pour une entreprise de services avec portfolio et formulaire de contact.',
+      technologies: ['WordPress', 'Elementor', 'SEO', 'Contact Form 7'],
+      features: ['Présentation services', 'Portfolio projets', 'Formulaire contact', 'Blog actualités'],
+      link: 'https://adenium.tn',
+      results: 'Leads qualifiés augmentés de 80%'
+    }
+  },
+  {
+    id: 'zitouna',
+    title: 'Zitouna Gourmet',
+    subtitle: 'Restaurant & réservation',
+    description: 'Site de restaurant avec menu interactif et système de réservation.',
+    longDescription: 'Site WordPress pour restaurant avec menu interactif, système de réservation en ligne et galerie photos.',
+    technologies: ['WordPress', 'Elementor', 'Réservation'],
+    category: ['wordpress'],
+    featured: false,
+    imageDesktop: 'img/projects/zitouna/desktop.png',
+    link: 'https://zitouna-gourmet.free.nf',
+    badge: '🍽️ RESTAURANT',
+    badgeColor: 'green-600',
+    techColor: 'green-600',
+    modalData: {
+      title: 'ZITOUNA GOURMET - Restaurant',
+      description: 'Site WordPress pour restaurant avec menu interactif, système de réservation en ligne et galerie photos.',
+      technologies: ['WordPress', 'Elementor', 'Booking Plugin', 'SEO'],
+      features: ['Menu interactif', 'Réservation en ligne', 'Galerie photos', 'Avis clients'],
+      link: 'https://zitouna-gourmet.free.nf',
+      results: 'Réservations augmentées de 120%'
+    }
+  },
+  {
+    id: 'direct-serrure',
+    title: 'DIRECT SERRURE',
+    subtitle: 'VENTE SERRURES & SYSTÈMES DE SÉCURITÉ',
+    description: 'Site e-commerce spécialisé dans les serrures et systèmes de sécurité.',
+    longDescription: 'Site e-commerce WordPress pour la vente de serrures et systèmes de sécurité professionnels.',
+    technologies: ['WordPress', 'WooCommerce', 'Elementor'],
+    category: ['wordpress', 'ecommerce'],
+    featured: false,
+    imageDesktop: 'img/projects/directSerrure/desktop.png',
+    link: 'https://direct-serrure.fr/',
+    badge: '🔒 SÉCURITÉ',
+    badgeColor: 'gray-700',
+    techColor: 'gray-700',
+    modalData: {
+      title: 'DIRECT SERRURE - Sécurité',
+      description: 'Site e-commerce WordPress pour la vente de serrures et systèmes de sécurité professionnels.',
+      technologies: ['WordPress', 'WooCommerce', 'Elementor', 'Paiement sécurisé'],
+      features: ['Catalogue produits', 'Fiches techniques', 'Guide d\'achat', 'Support client'],
+      link: 'https://direct-serrure.fr/',
+      results: 'Chiffre d\'affaires multiplié par 3'
+    }
+  },
+  {
+    id: 'bfpetfood',
+    title: 'BFPETFOOD',
+    subtitle: 'Vente d\'accessoires et aliments pour animaux',
+    description: 'Site e-commerce pour accessoires et aliments pour animaux.',
+    longDescription: 'Boutique Shopify spécialisée dans les accessoires et aliments premium pour animaux.',
+    technologies: ['Shopify', 'Paiement en ligne'],
+    category: ['shopify', 'ecommerce'],
+    featured: false,
+    imageDesktop: 'img/projects/bfpetfood/desktop.png',
+    link: 'https://bfpetfood.shop/',
+    badge: '🐾 ANIMAUX',
+    badgeColor: 'purple-600',
+    techColor: 'purple-600',
+    modalData: {
+      title: 'BF PET FOOD - Accessoires Animaux',
+      description: 'Boutique Shopify spécialisée dans les accessoires et aliments premium pour animaux.',
+      technologies: ['Shopify', 'Shop Pay', 'E-commerce', 'Marketing'],
+      features: ['Boutique en ligne', 'Paiement sécurisé', 'Fiches produits', 'Livraison'],
+      link: 'https://bfpetfood.shop/',
+      results: 'Ventes mensuelles stables dès le 1er mois'
+    }
+  },
+  {
+    id: 'kilowatt',
+    title: 'KILOWATT',
+    subtitle: 'Fabricant de faisceaux et cordons électriques',
+    description: 'Site e-commerce pour fabricant de faisceaux et cordons électriques.',
+    longDescription: 'Boutique  spécialisée dans les faisceaux et cordons électriques premium.',
+    technologies: ['Shopify', 'Paiement en ligne'],
+    category: ['wordpress', 'ecommerce'],
+    featured: false,
+    imageDesktop: 'img/projects/kilowatt/desktop.png',
+    link: 'https://kilowatt-international.com/fr/home/',
+    badge: '⚡ ÉLECTRICITÉ',
+    badgeColor: 'yellow-600',
+    techColor: 'yellow-600',
+    modalData: {
+      title: 'KILOWATT - Faisceaux Électriques',
+      description: 'Boutique Shopify spécialisée dans les faisceaux et cordons électriques premium.',
+      technologies: ['Shopify', 'Shop Pay', 'E-commerce', 'Marketing'],
+      features: ['Boutique en ligne', 'Paiement sécurisé', 'Fiches produits', 'Livraison'],
+      link: 'https://kilowatt-international.com/fr/home/',
+      results: 'Ventes mensuelles stables dès le 1er mois'
+    }
+  },
+    {
+    id: 'andrebpo',
+    title: 'ANDRE BPO',
+    subtitle: 'Business Process Outsourcing',
+    description: 'Site corporate pour société de Business Process Outsourcing.',
+    longDescription: 'Site corporate pour société de Business Process Outsourcing.',
+    technologies: ['Wordpress', 'Elementor'],
+    category: ['wordpress', 'corporate'],
+    featured: false,
+    imageDesktop: 'img/projects/andreBpo/desktop.png',
+    link: 'https://www.andre-bpo.fr/',
+    badge: '⚡ Services',
+    badgeColor: 'yellow-600',
+    techColor: 'yellow-600',
+    modalData: {
+      title: 'ANDRE BPO - Business Process Outsourcing',
+      description: 'Site corporate pour société de Business Process Outsourcing.',
+      technologies: ['Wordpress', 'Elementor'],
+      features: ['Site corporate', 'Design responsive', 'SEO optimisé', 'Support client'],
+      link: 'https://www.andre-bpo.fr/',
+      results: 'Facilité de mise à jour du contenu'
+    }
+  },
+   {
+    id: 'portfolioaminenouri',
+    title: 'PORTFOLIO AMINE NOURI',
+    subtitle: 'Développeur Web Freelance',
+    description: 'Portfolio pour développeur web freelance.',
+    longDescription: 'Portfolio pour développeur web freelance.',
+    technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+    category: ['Portfolio', 'business'],
+    featured: false,
+    imageDesktop: 'img/projects/amineNouriPortfolio/desktop.png',
+    link: 'https://aminenouriwebdev.github.io/portfolio/',
+    badge: '🚀 Services',
+    badgeColor: 'purple-600',
+    techColor: 'purple-600',
+    modalData: {
+      title: 'PORTFOLIO AMINE NOURI - Développeur Web Freelance',
+      description: 'Portfolio pour développeur web freelance.',
+      technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+      features: ['Site corporate', 'Design responsive', 'SEO optimisé', 'Support client'],
+      link: 'https://aminenouriwebdev.github.io/portfolio/',
+      results: 'Facilité de mise à jour du contenu'
+    }
+  },
+    {
+    id: 'mannequinbelge',
+    title: 'Mannequin Belge',
+    subtitle: 'Galerie d\'une mannequin belge',
+    description: 'Galerie pour une mannequin belge.',
+    longDescription: 'Portfolio pour développeur web freelance.',
+    technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+    category: ['Portfolio', 'Showbiz'],
+    featured: true,
+    imageDesktop: 'img/projects/mannequin/desktop.png',
+    link: '#',
+    badge: '🚀 Services',
+    badgeColor: 'pink-600',
+    techColor: 'pink-600',
+    modalData: {
+      title: 'Mannequin Belge - Galerie d\'une mannequin belge',
+      description: 'Galerie pour une mannequin belge.',
+      technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+      features: ['Site corporate', 'Design responsive', 'SEO optimisé', 'Support client'],
+      link: '#',
+      results: 'Facilité de mise à jour du contenu'
+    }
+  },
+     {
+    id: 'excelduzero',
+    title: 'Excel du Zéro',
+    subtitle: 'Formation Excel',
+    description: 'Formation Excel Du Debutant à l\'expertise.',
+    longDescription: 'Formation Excel pour débutants.',
+    technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+    category: ['E-learning', 'Application'],
+    featured: false,
+    imageDesktop: 'https://learn.edure.in/s/store/courses/621a064f0cf2adc892e3c806/cover.jpg?v=2',
+    link: '#',
+    badge: '🚀 Services',
+    badgeColor: 'green-600',
+    techColor: 'green-600',
+    modalData: {
+      title: 'Excel du Zéro - Formation Excel',
+      description: 'Formation Excel Du Debutant à l\'expertise.',
+      technologies: ['NextJs', 'TailwindCSS',  'Supabase'],
+      features: ['Site corporate', 'Design responsive', 'SEO optimisé', 'Support client'],
+      link: '#',
+      results: 'Facilité de mise à jour du contenu'
+    }
+  },
+  {
+    id: 'deposark',
+    title: 'DeposArk',
+    subtitle: 'Plateforme de dépôt de fonds',
+    description: 'Plateforme de dépôt de fonds pour les entreprises.',
+    longDescription: 'Plateforme de dépôt de fonds pour les entreprises.',
+    technologies: ['Wordpress', 'Elementor'],
+    category: ['E-learning', 'Application'],
+    featured: false,
+    imageDesktop: 'https://depot.dev/depot-social.png',
+    link: '#',
+    badge: '🚀 Services',
+    badgeColor: 'blue-600',
+    techColor: 'blue-600',
+    modalData: {
+      title: 'Deposark - Plateforme de dépôt de fonds',
+      description: 'Plateforme de dépôt de fonds pour les entreprises.',
+      technologies: ['Wordpress', 'Elementor'],
+      features: ['Site corporate', 'Design responsive', 'SEO optimisé', 'Support client'],
+      link: '#',
+      results: 'Facilité de mise à jour du contenu'
+    }
+  },
+   {
+    id: 'voyantemedium',
+    title: 'Voyante Medium',
+    subtitle: 'Site de voyance en ligne',
+    description: 'Site de voyance en ligne pour les professionnels.',
+    longDescription: 'Site de voyance en ligne pour les professionnels.',
+    technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+    category: ['Portfolio', 'Showbiz'],
+    featured: false,
+    imageDesktop: 'img/projects/voyante/desktop.png',
+    link: '#',
+    badge: '🚀 Services',
+    badgeColor: 'purple-600',
+    techColor: 'purple-600',
+    modalData: {
+      title: 'Voyante Medium - Site de voyance en ligne',
+      description: 'Site de voyance en ligne pour les professionnels.',
+      technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+      features: ['Site corporate', 'Design responsive', 'SEO optimisé', 'Support client'],
+      link: '#',
+      results: 'Facilité de mise à jour du contenu'
+    }
+  },
+   {
+    id: 'artisanserruriervoltaire',
+    title: 'Artisan Serrurier Voltaire',
+    subtitle: 'Site de serrurier à Voltaire',
+    description: 'Site de serrurier à Voltaire.',
+    longDescription: 'Site de serrurier à Voltaire.',
+    technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+    category: ['Portfolio', 'Showbiz'],
+    featured: false,
+    imageDesktop: 'img/projects/artisanSerrurier/desktop.png',
+    link: 'https://aminenouriwebdev.github.io/ArtisanSerrurierVoltaire/index3.html',
+    badge: '🚀 Services',
+    badgeColor: 'blue-200',
+    techColor: 'blue-200',
+    modalData: {
+      title: 'Artisan Serrurier Voltaire - Site de serrurier à Voltaire',
+      description: 'Site de serrurier à Voltaire.',
+      technologies: ['html5', 'css3', 'javascript', 'tailwindcss'],
+      features: ['Site corporate', 'Design responsive', 'SEO optimisé', 'Support client'],
+      link: 'https://aminenouriwebdev.github.io/ArtisanSerrurierVoltaire/index3.html',
+      results: 'Facilité de mise à jour du contenu'
+    }
+  },
+
+];
+
+// Exporter les données pour utilisation dans d'autres fichiers
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = projectsData;
+} else {
+  window.projectsData = projectsData;
+}
