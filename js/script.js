@@ -241,3 +241,102 @@ function closeProjectModal() {
   modal.classList.add('hidden');
   document.body.style.overflow = '';
 }
+// === 8. CHAT IA MODAL ===
+function openChatModal() {
+  const modal = document.getElementById('chat-modal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+  
+  // Focus sur l'input
+  setTimeout(() => {
+    document.getElementById('chat-input').focus();
+  }, 100);
+}
+
+function closeChatModal() {
+  const modal = document.getElementById('chat-modal');
+  modal.classList.remove('flex');
+  modal.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const message = input.value.trim();
+  
+  if (!message) return;
+  
+  // Afficher le message de l'utilisateur
+  const chatMessages = document.getElementById('chat-messages');
+  const userMessage = document.createElement('div');
+  userMessage.className = 'text-left';
+  userMessage.innerHTML = `
+    <div class="inline-block bg-gray-700 text-white p-3 rounded-lg max-w-[80%]">
+      ${message}
+    </div>
+    <p class="text-xs text-gray-500 mt-1">Vous</p>
+  `;
+  chatMessages.appendChild(userMessage);
+  
+  // Réponse automatique (simulée pour l'instant)
+  setTimeout(() => {
+    const botMessage = document.createElement('div');
+    botMessage.className = 'text-right';
+    botMessage.innerHTML = `
+      <div class="inline-block bg-primary/20 text-white p-3 rounded-lg max-w-[80%]">
+        ${getChatResponse(message)}
+      </div>
+      <p class="text-xs text-gray-500 mt-1">MaxSolving AI</p>
+    `;
+    chatMessages.appendChild(botMessage);
+    
+    // Scroll vers le bas
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 500);
+  
+  // Effacer l'input
+  input.value = '';
+  
+  // Scroll vers le bas
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function getChatResponse(message) {
+  // Réponses basiques pour l'instant - À remplacer par une IA réelle
+  const lowerMessage = message.toLowerCase();
+  
+  if (lowerMessage.includes('bonjour') || lowerMessage.includes('salut')) {
+    return "Bonjour ! Je suis l'assistant virtuel de MaxSolving. Comment puis-je vous aider ?";
+  }
+  
+  if (lowerMessage.includes('prix') || lowerMessage.includes('tarif') || lowerMessage.includes('combien')) {
+    return "Nos tarifs varient selon le projet :\n• Site vitrine : à partir de 399€\n• E-commerce : à partir de 799€\n• Automatisation : à partir de 299€\n• Abonnement tout-inclus : à partir de 69€/mois\n\nPour un devis précis, utilisez notre formulaire !";
+  }
+  
+  if (lowerMessage.includes('délai') || lowerMessage.includes('temps')) {
+    return "Délais moyens :\n• Site vitrine : 5-10 jours\n• E-commerce : 10-20 jours\n• Application web : à partir de 1 mois\n• Automatisation : 3-7 jours\n\nAccélération possible sur demande !";
+  }
+  
+  if (lowerMessage.includes('service') || lowerMessage.includes('prestation')) {
+    return "Nous offrons :\n1. Développement Web (WordPress, React, Next.js)\n2. E-commerce (WooCommerce, Shopify)\n3. Automation IA (Chatbots WhatsApp, n8n)\n4. SEO & Branding\n5. Hébergement & Maintenance";
+  }
+  
+  if (lowerMessage.includes('portfolio') || lowerMessage.includes('réalisations')) {
+    return "Nous avons réalisé +15 projets avec 98% de satisfaction. Visitez notre page Portfolio pour voir nos dernières réalisations !";
+  }
+  
+  if (lowerMessage.includes('contact') || lowerMessage.includes('téléphone') || lowerMessage.includes('email')) {
+    return "Email : contact@maxsolving.com\nWhatsApp : +216 26 067 067\nNous répondons sous 24h !";
+  }
+  
+  if (lowerMessage.includes('wordpress') || lowerMessage.includes('html') || lowerMessage.includes('react')) {
+    return "Nous maîtrisons :\n• WordPress (sites vitrines, e-commerce)\n• HTML/CSS/JS (sites sur-mesure)\n• React/Next.js (applications modernes)\n• Shopify (boutiques en ligne)";
+  }
+  
+  if (lowerMessage.includes('paiement') || lowerMessage.includes('pay')) {
+    return "Modes de paiement :\n• Pour la Tunisie : Virement, Flouci, D17\n• International : Western Union, Crypto\n• Paiement après validation client possible\n• Échéancier flexible";
+  }
+  
+  return "Merci pour votre message ! Je suis un assistant basique pour l'instant. Pour une réponse détaillée, contactez-nous par email ou WhatsApp. Sinon, posez-moi une question sur nos services, tarifs ou délais.";
+}

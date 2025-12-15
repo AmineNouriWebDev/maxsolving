@@ -884,7 +884,7 @@
         <div class="py-20 bg-gradient-to-t from-bgDark to-black relative">
           <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2
-              class="text-3xl md:text-4xl font-bold text-white mb-4 font-tech"
+              class="text-3xl md:text-4xl font-bold text-white font-tech mb-4"
             >
               PRÊT À <span class="text-primary">DÉMARRER</span> ?
             </h2>
@@ -893,9 +893,10 @@
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div
-                class="glass p-6 rounded-xl hover:border-primary transition-colors cursor-pointer"
-                onclick="router('contact')"
+              <!-- Bouton Email -->
+              <a
+                href="mailto:contact@maxsolving.com"
+                class="glass p-6 rounded-xl hover:border-primary transition-colors cursor-pointer block hover-lift"
               >
                 <div class="text-primary mb-4 flex justify-center">
                   <svg
@@ -914,11 +915,17 @@
                 </div>
                 <h3 class="font-bold text-white mb-2">Email</h3>
                 <p class="text-gray-400 text-sm">contact@maxsolving.com</p>
-              </div>
+                <p class="text-primary text-xs mt-2 font-tech">
+                  Réponse sous 24h
+                </p>
+              </a>
 
-              <div
-                class="glass p-6 rounded-xl hover:border-green-500 transition-colors cursor-pointer"
-                onclick="router('contact')"
+              <!-- Bouton WhatsApp -->
+              <a
+                href="https://wa.me/21626067067"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="glass p-6 rounded-xl hover:border-green-500 transition-colors cursor-pointer block hover-lift"
               >
                 <div class="text-green-500 mb-4 flex justify-center">
                   <svg
@@ -936,12 +943,16 @@
                   </svg>
                 </div>
                 <h3 class="font-bold text-white mb-2">WhatsApp</h3>
-                <p class="text-gray-400 text-sm">Réponse immédiate</p>
-              </div>
+                <p class="text-gray-400 text-sm">+216 26 067 067</p>
+                <p class="text-green-500 text-xs mt-2 font-tech">
+                  Réponse immédiate
+                </p>
+              </a>
 
+              <!-- Bouton Chat en Direct -->
               <div
-                class="glass p-6 rounded-xl hover:border-blue-500 transition-colors cursor-pointer"
-                onclick="router('contact')"
+                class="glass p-6 rounded-xl hover:border-blue-500 transition-colors cursor-pointer hover-lift"
+                onclick="openChatModal()"
               >
                 <div class="text-blue-500 mb-4 flex justify-center">
                   <svg
@@ -959,13 +970,16 @@
                   </svg>
                 </div>
                 <h3 class="font-bold text-white mb-2">Chat en Direct</h3>
-                <p class="text-gray-400 text-sm">Discutons maintenant</p>
+                <p class="text-gray-400 text-sm">Assistant IA 24/7</p>
+                <p class="text-blue-500 text-xs mt-2 font-tech">
+                  Réponses instantanées
+                </p>
               </div>
             </div>
 
             <button
               onclick="router('contact')"
-              class="btn-neon border-2 border-primary text-primary hover:bg-primary hover:text-black px-8 py-4 rounded font-tech font-bold uppercase tracking-widest transition-all"
+              class="btn-neon border-2 border-primary text-primary hover:bg-primary hover:text-black px-8 py-4 rounded font-tech font-bold uppercase tracking-widest transition-all hover-lift"
             >
               Nous Contacter
             </button>
@@ -2351,5 +2365,82 @@
     <!-- Vos Scripts JS -->
     <script src="js/script.js"></script>
     <script src="js/animation.js"></script>
+    <!-- Modal Chat IA -->
+    <div
+      id="chat-modal"
+      class="fixed inset-0 z-[1000] hidden items-center justify-center p-4"
+    >
+      <div class="fixed inset-0 bg-black/80" onclick="closeChatModal()"></div>
+
+      <div
+        class="relative bg-bgDark rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto glass border border-white/10"
+      >
+        <button
+          onclick="closeChatModal()"
+          class="absolute top-4 right-4 text-white hover:text-primary z-10"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-white font-tech mb-4">
+            💬 Chat avec MaxSolving
+          </h3>
+          <p class="text-gray-400 mb-6">
+            Posez-moi vos questions sur nos services, tarifs, délais, etc.
+          </p>
+
+          <!-- Messages du chat -->
+          <div
+            id="chat-messages"
+            class="space-y-4 mb-6 max-h-[40vh] overflow-y-auto"
+          >
+            <div class="text-right">
+              <div
+                class="inline-block bg-primary/20 text-white p-3 rounded-lg max-w-[80%]"
+              >
+                Bonjour ! Je suis l'assistant IA de MaxSolving. Comment puis-je
+                vous aider ?
+              </div>
+              <p class="text-xs text-gray-500 mt-1">MaxSolving AI</p>
+            </div>
+          </div>
+
+          <!-- Input du chat -->
+          <div class="flex gap-2">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Tapez votre message..."
+              class="flex-1 bg-black/30 border border-gray-700 rounded-lg p-3 text-white focus:border-primary focus:outline-none"
+              onkeypress="if(event.key === 'Enter') sendChatMessage()"
+            />
+            <button
+              onclick="sendChatMessage()"
+              class="btn-neon bg-primary text-black px-6 py-3 rounded font-tech font-bold uppercase hover:bg-white transition-colors"
+            >
+              Envoyer
+            </button>
+          </div>
+
+          <p class="text-gray-500 text-sm mt-4">
+            💡 L'IA peut faire des erreurs. Pour un devis précis, utilisez le
+            formulaire.
+          </p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
