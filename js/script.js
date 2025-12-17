@@ -1002,7 +1002,7 @@ async function submitDevisForm() {
 
   try {
     // URL du webhook n8n (à remplacer par votre URL)
-    const n8nWebhookURL = 'https://n8n.deposark.com/webhook-test/webhook/devis-maxsolving';
+    const n8nWebhookURL = 'https://n8n.deposark.com/webhook/webhook/devis-maxsolving';
     
     // Envoyer les données à n8n
     const response = await fetch(n8nWebhookURL, {
@@ -1104,3 +1104,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+// === 10. CONFIGURATION n8n PRODUCTION ===
+const n8nConfig = {
+  // TEST (pour déboguer)
+  test: {
+    url: 'https://n8n.deposark.com/webhook-test/webhook/devis-maxsolving',
+    active: false
+  },
+  
+  // PRODUCTION (vrai workflow)
+  production: {
+    url: 'https://n8n.deposark.com/webhook/devis-maxsolving',
+    active: true
+  }
+};
+
+// Sélectionnez l'URL active
+const getN8nWebhookURL = () => {
+  return n8nConfig.production.active ? n8nConfig.production.url : n8nConfig.test.url;
+};
