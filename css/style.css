@@ -428,3 +428,10 @@ body.menu-open {
     box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
     font-family: 'Montserrat', sans-serif;
 }
+
+.toastify-custom {
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}

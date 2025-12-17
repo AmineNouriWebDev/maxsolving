@@ -641,9 +641,167 @@ Je suis là pour vous aider ! 🚀`
   return responses.default;
 }
 // === 9. FORMULAIRE DEVIS AVANCÉ ===
-let currentStep = 1;
-const totalSteps = 4;
+// === 9. GESTION UNIFIÉE DES DEVIS ===
 
+// Stockage des données de pré-remplissage
+window.devisPreset = {
+  modele_service: null,
+  types_projet: [],
+  fonctionnalites: [],
+  coordonnees: {}
+};
+
+let currentStep = 1;
+const totalSteps = 5;
+
+// Fonction pour démarrer un devis avec un modèle spécifique
+function startDevisWithMode(modele) {
+  window.devisPreset = {
+    modele_service: modele,
+    types_projet: [],
+    fonctionnalites: [],
+    coordonnees: {}
+  };
+  
+  // Naviguer vers le formulaire de devis
+  router('devis');
+  
+  // Pré-remplir automatiquement l'étape 5
+  setTimeout(() => {
+    if (window.devisPreset.modele_service) {
+      const radio = document.querySelector(`input[name="modele_service"][value="${window.devisPreset.modele_service}"]`);
+      if (radio) {
+        radio.checked = true;
+        // Mettre en évidence visuellement
+        const labelId = modele === 'developpement_unique' ? 'label-developpement-unique' : 'label-abonnement-tout-inclus';
+        const label = document.getElementById(labelId);
+        if (label) {
+          label.style.borderColor = modele === 'developpement_unique' ? '#00F0FF' : '#8B5CF6';
+          label.style.background = modele === 'developpement_unique' ? 'rgba(0, 240, 255, 0.05)' : 'rgba(139, 92, 246, 0.05)';
+        }
+      }
+    }
+  }, 300);
+}
+
+// Fonction pour démarrer depuis le devis express
+function startDevisFromExpress() {
+  // Récupérer les données du devis express
+  const nom = document.getElementById('express-nom')?.value;
+  const email = document.getElementById('express-email')?.value;
+  const modele = document.querySelector('input[name="express-modele"]:checked')?.value;
+  
+  // Récupérer les types de projet cochés
+  const types = Array.from(document.querySelectorAll('input[data-express="type"]:checked'))
+    .map(cb => cb.value);
+  
+  // Récupérer les fonctionnalités cochées
+  const fonctions = Array.from(document.querySelectorAll('input[data-express="fonction"]:checked'))
+    .map(cb => cb.value);
+  
+  // Stocker les données
+  window.devisPreset = {
+    modele_service: modele,
+    types_projet: types,
+    fonctionnalites: fonctions,
+    coordonnees: { nom, email }
+  };
+  
+  // Valider au moins un modèle sélectionné
+  if (!modele) {
+    alert('Veuillez sélectionner un modèle de service (Développement Unique ou Abonnement Tout-Inclus)');
+    return;
+  }
+  
+  // Naviguer vers le formulaire de devis
+  router('devis');
+  
+  // Pré-remplir automatiquement après un délai
+  setTimeout(() => {
+    prefillDevisFromPreset();
+  }, 400);
+}
+
+// Fonction pour pré-remplir le formulaire à partir des données présélectionnées
+function prefillDevisFromPreset() {
+  if (!window.devisPreset || Object.keys(window.devisPreset).length === 0) return;
+  
+  const preset = window.devisPreset;
+  
+  // 1. Pré-remplir les coordonnées (étape 1)
+  if (preset.coordonnees.nom) {
+    document.getElementById('nom').value = preset.coordonnees.nom;
+  }
+  if (preset.coordonnees.email) {
+    document.getElementById('email').value = preset.coordonnees.email;
+  }
+  
+  // 2. Pré-remplir les types de projet (étape 2)
+  if (preset.types_projet.length > 0) {
+    preset.types_projet.forEach(type => {
+      const checkbox = document.querySelector(`input[name="type_projet"][value="${type}"]`);
+      if (checkbox) {
+        checkbox.checked = true;
+        // Ajouter un effet visuel
+        const label = checkbox.closest('label');
+        if (label) {
+          label.style.borderColor = '#00F0FF';
+          label.style.background = 'rgba(0, 240, 255, 0.05)';
+        }
+      }
+    });
+  }
+  
+  // 3. Pré-remplir les fonctionnalités dans autres_besoins (étape 3)
+  if (preset.fonctionnalites.length > 0) {
+    const textarea = document.querySelector('textarea[name="autres_besoins"]');
+    if (textarea) {
+      const existingText = textarea.value;
+      const newText = preset.fonctionnalites.map(f => `• ${getFonctionnaliteLabel(f)}`).join('\n');
+      textarea.value = existingText ? `${existingText}\n${newText}` : newText;
+    }
+  }
+  
+  // 4. Pré-remplir le modèle de service (étape 5)
+  if (preset.modele_service) {
+    const radio = document.querySelector(`input[name="modele_service"][value="${preset.modele_service}"]`);
+    if (radio) {
+      radio.checked = true;
+      // Mettre en évidence visuellement
+      const labelId = preset.modele_service === 'developpement_unique' 
+        ? 'label-developpement-unique' 
+        : 'label-abonnement-tout-inclus';
+      const label = document.getElementById(labelId);
+      if (label) {
+        label.style.borderColor = preset.modele_service === 'developpement_unique' ? '#00F0FF' : '#8B5CF6';
+        label.style.background = preset.modele_service === 'developpement_unique' 
+          ? 'rgba(0, 240, 255, 0.1)' 
+          : 'rgba(139, 92, 246, 0.1)';
+      }
+    }
+  }
+  
+  // Afficher un message informatif
+  if (preset.coordonnees.nom || preset.modele_service) {
+    showToast('Votre devis a été pré-rempli avec vos sélections précédentes.', 'info');
+  }
+}
+
+// Fonction utilitaire pour obtenir le libellé d'une fonctionnalité
+function getFonctionnaliteLabel(value) {
+  const labels = {
+    'formulaire_contact': 'Formulaire de contact',
+    'paiement_online': 'Paiement en ligne',
+    'chatbot_whatsapp': 'Chatbot WhatsApp',
+    'reservation_rdv': 'Système de réservation/RDV',
+    'formulaire_contact': 'Formulaire de contact',
+    'paiement_en_ligne': 'Paiement en ligne',
+    'chatbot_whatsapp': 'Chatbot WhatsApp'
+  };
+  return labels[value] || value;
+}
+
+// Validation des étapes
 function validateStep1() {
   const nom = document.getElementById('nom').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -670,20 +828,33 @@ function validateStep1() {
   if (isValid) {
     nextStep(2);
   }
+  return isValid;
 }
 
 function validateStep2() {
   const checkboxes = document.querySelectorAll('input[name="type_projet"]:checked');
   if (checkboxes.length === 0) {
     alert('Veuillez sélectionner au moins un type de projet');
-    return;
+    return false;
   }
   nextStep(3);
+  return true;
 }
 
 function validateStep3() {
   // Pas de validation stricte pour l'étape 3
   nextStep(4);
+  return true;
+}
+
+function validateStep4() {
+  const budgetSelected = document.querySelector('input[name="budget"]:checked');
+  if (!budgetSelected) {
+    alert('Veuillez sélectionner une tranche de budget');
+    return false;
+  }
+  nextStep(5);
+  return true;
 }
 
 function prevStep(step) {
@@ -695,13 +866,21 @@ function nextStep(stepNumber) {
   document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
   
   // Afficher l'étape courante
-  document.getElementById('step' + stepNumber).classList.add('active');
+  const stepElement = document.getElementById('step' + stepNumber);
+  if (stepElement) {
+    stepElement.classList.add('active');
+  }
   
   // Mettre à jour la barre de progression
   updateProgressBar(stepNumber);
   
   // Mettre à jour currentStep
   currentStep = stepNumber;
+  
+  // Pré-remplir si nécessaire
+  if (window.devisPreset && Object.keys(window.devisPreset).length > 0) {
+    setTimeout(() => prefillCurrentStep(stepNumber), 100);
+  }
 }
 
 function updateProgressBar(stepNumber) {
@@ -724,8 +903,54 @@ function updateProgressBar(stepNumber) {
   });
 }
 
+// Fonction pour pré-remplir l'étape courante
+function prefillCurrentStep(stepNumber) {
+  if (!window.devisPreset || Object.keys(window.devisPreset).length === 0) return;
+  
+  const preset = window.devisPreset;
+  
+  switch(stepNumber) {
+    case 1:
+      // Coordonnées déjà pré-remplies dans prefillDevisFromPreset
+      if (preset.coordonnees.nom) {
+        document.getElementById('nom').value = preset.coordonnees.nom;
+      }
+      if (preset.coordonnees.email) {
+        document.getElementById('email').value = preset.coordonnees.email;
+      }
+      break;
+    case 5:
+      // Modèle de service déjà pré-rempli
+      if (preset.modele_service) {
+        const radio = document.querySelector(`input[name="modele_service"][value="${preset.modele_service}"]`);
+        if (radio) {
+          radio.checked = true;
+          const labelId = preset.modele_service === 'developpement_unique' 
+            ? 'label-developpement-unique' 
+            : 'label-abonnement-tout-inclus';
+          const label = document.getElementById(labelId);
+          if (label) {
+            label.style.borderColor = preset.modele_service === 'developpement_unique' ? '#00F0FF' : '#8B5CF6';
+            label.style.background = preset.modele_service === 'developpement_unique' 
+              ? 'rgba(0, 240, 255, 0.1)' 
+              : 'rgba(139, 92, 246, 0.1)';
+          }
+        }
+      }
+      break;
+  }
+}
+
 async function submitDevisForm() {
-  // Récupérer toutes les données du formulaire
+  // Récupérer le modèle de service
+  const modeleService = document.querySelector('input[name="modele_service"]:checked')?.value;
+  
+  if (!modeleService) {
+    alert('Veuillez sélectionner un modèle de service (Développement Unique ou Abonnement Tout-Inclus)');
+    return false;
+  }
+  
+  // Construire l'objet de données
   const formData = {
     // Étape 1
     nom: document.getElementById('nom').value,
@@ -754,13 +979,23 @@ async function submitDevisForm() {
     budget: document.querySelector('input[name="budget"]:checked')?.value || '',
     message: document.getElementById('message').value,
     
+    // Étape 5
+    modele_service: modeleService,
+    modele_service_label: modeleService === 'developpement_unique' 
+      ? 'Développement Unique' 
+      : 'Abonnement Tout-Inclus',
+    
     // Métadonnées
     date_soumission: new Date().toISOString(),
-    url_page: window.location.href
+    url_page: window.location.href,
+    
+    // Source du devis
+    source: window.devisPreset?.coordonnees?.nom ? 'devis_express' : 'formulaire_direct',
+    preset_data: window.devisPreset || {}
   };
 
   // Afficher le bouton de chargement
-  const submitBtn = document.querySelector('#step4 button[type="submit"]');
+  const submitBtn = document.querySelector('#step5 button[type="submit"]');
   const originalText = submitBtn.textContent;
   submitBtn.textContent = 'Envoi en cours...';
   submitBtn.disabled = true;
@@ -785,8 +1020,14 @@ async function submitDevisForm() {
       // Réinitialiser le formulaire après 2 secondes
       setTimeout(() => {
         document.getElementById('devis-form').reset();
+        // Réinitialiser les styles des labels
+        document.querySelectorAll('label[id^="label-"]').forEach(label => {
+          label.style.borderColor = '';
+          label.style.background = '';
+        });
         nextStep(1);
         currentStep = 1;
+        window.devisPreset = {};
       }, 2000);
     } else {
       throw new Error('Erreur lors de l\'envoi');
@@ -833,10 +1074,33 @@ function showErrorNotification() {
   }
 }
 
+// Fonction pour montrer des toasts
+function showToast(message, type = 'info') {
+  if (typeof Toastify !== 'undefined') {
+    Toastify({
+      text: message,
+      duration: 4000,
+      gravity: "top",
+      position: "right",
+      backgroundColor: type === 'info' ? "#3B82F6" : 
+                     type === 'success' ? "#10B981" : 
+                     type === 'error' ? "#EF4444" : "#6B7280",
+      className: "toastify-custom"
+    }).showToast();
+  }
+}
+
 // Initialiser le formulaire au chargement
 document.addEventListener('DOMContentLoaded', function() {
   // S'assurer que nous sommes sur l'étape 1
   if (document.getElementById('devis-form')) {
     updateProgressBar(1);
+    
+    // Si on arrive sur la page devis avec des présélections, les appliquer
+    if (window.location.hash === '#devis' && window.devisPreset && window.devisPreset.modele_service) {
+      setTimeout(() => {
+        prefillDevisFromPreset();
+      }, 500);
+    }
   }
 });

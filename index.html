@@ -727,7 +727,7 @@
                 </div>
 
                 <button
-                  onclick="router('devis')"
+                  onclick="startDevisWithMode('developpement_unique')"
                   class="btn-neon bg-primary text-black w-full py-3 rounded font-tech font-bold uppercase tracking-widest hover:bg-white transition-colors"
                 >
                   Choisir cette option
@@ -781,7 +781,7 @@
                 </ul>
 
                 <button
-                  onclick="router('devis')"
+                  onclick="startDevisWithMode('abonnement_tout_inclus')"
                   class="btn-neon bg-secondary text-white w-full py-3 rounded font-tech font-bold uppercase tracking-widest hover:bg-purple-600 transition-colors"
                 >
                   Choisir cette option
@@ -792,6 +792,7 @@
         </div>
 
         <!-- Section Formulaire Rapide -->
+        <!-- Section Formulaire Rapide -->
         <div class="py-20 bg-bgDark relative">
           <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass p-8 rounded-2xl border border-white/10">
@@ -800,6 +801,51 @@
                   DEVIS <span class="text-primary">EXPRESS</span>
                 </h2>
                 <p class="text-gray-400">Obtenez une estimation en 2 minutes</p>
+              </div>
+
+              <!-- Modèle de service -->
+              <div class="mb-8">
+                <label class="block text-gray-400 text-sm mb-3 font-tech"
+                  >Modèle de service</label
+                >
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <label
+                    class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-700 rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    <input
+                      type="radio"
+                      name="express-modele"
+                      value="developpement_unique"
+                      class="form-radio text-primary h-5 w-5"
+                    />
+                    <div>
+                      <span class="font-bold text-white"
+                        >Développement Unique</span
+                      >
+                      <p class="text-gray-400 text-xs">
+                        Paiement unique • À partir de 399€
+                      </p>
+                    </div>
+                  </label>
+                  <label
+                    class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-700 rounded-lg hover:bg-white/5 transition-colors"
+                  >
+                    <input
+                      type="radio"
+                      name="express-modele"
+                      value="abonnement_tout_inclus"
+                      class="form-radio text-secondary h-5 w-5"
+                    />
+                    <div>
+                      <span class="font-bold text-white"
+                        >Abonnement Tout-Inclus</span
+                      >
+                      <p class="text-gray-400 text-xs">
+                        Tout inclus • À partir de 69€/mois
+                      </p>
+                    </div>
+                  </label>
+                </div>
               </div>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -813,6 +859,8 @@
                     >
                       <input
                         type="checkbox"
+                        data-express="type"
+                        value="site_vitre"
                         class="form-checkbox text-primary h-5 w-5 rounded"
                       />
                       <span class="text-gray-300">Site Vitrine</span>
@@ -822,6 +870,8 @@
                     >
                       <input
                         type="checkbox"
+                        data-express="type"
+                        value="ecommerce"
                         class="form-checkbox text-primary h-5 w-5 rounded"
                       />
                       <span class="text-gray-300">E-commerce</span>
@@ -831,16 +881,29 @@
                     >
                       <input
                         type="checkbox"
+                        data-express="type"
+                        value="refonte"
+                        class="form-checkbox text-primary h-5 w-5 rounded"
+                      />
+                      <span class="text-gray-300">Refonte site existant</span>
+                    </label>
+                    <label
+                      class="flex items-center space-x-3 cursor-pointer p-3 border border-gray-700 rounded hover:bg-white/5 transition-colors"
+                    >
+                      <input
+                        type="checkbox"
+                        data-express="type"
+                        value="automation"
                         class="form-checkbox text-secondary h-5 w-5 rounded"
                       />
-                      <span class="text-gray-300">Automatisation</span>
+                      <span class="text-gray-300">Automatisation IA</span>
                     </label>
                   </div>
                 </div>
 
                 <div>
                   <label class="block text-gray-400 text-sm mb-3 font-tech"
-                    >Fonctionnalités</label
+                    >Fonctionnalités principales</label
                   >
                   <div class="space-y-2">
                     <label
@@ -848,6 +911,8 @@
                     >
                       <input
                         type="checkbox"
+                        data-express="fonction"
+                        value="formulaire_contact"
                         class="form-checkbox text-primary h-5 w-5 rounded"
                       />
                       <span class="text-gray-300">Formulaire de contact</span>
@@ -857,6 +922,8 @@
                     >
                       <input
                         type="checkbox"
+                        data-express="fonction"
+                        value="paiement_online"
                         class="form-checkbox text-primary h-5 w-5 rounded"
                       />
                       <span class="text-gray-300">Paiement en ligne</span>
@@ -866,21 +933,54 @@
                     >
                       <input
                         type="checkbox"
+                        data-express="fonction"
+                        value="chatbot_whatsapp"
                         class="form-checkbox text-secondary h-5 w-5 rounded"
                       />
                       <span class="text-gray-300">Chatbot WhatsApp</span>
+                    </label>
+                    <label
+                      class="flex items-center space-x-3 cursor-pointer p-3 border border-gray-700 rounded hover:bg-white/5 transition-colors"
+                    >
+                      <input
+                        type="checkbox"
+                        data-express="fonction"
+                        value="reservation_rdv"
+                        class="form-checkbox text-primary h-5 w-5 rounded"
+                      />
+                      <span class="text-gray-300">Réservation/RDV</span>
                     </label>
                   </div>
                 </div>
               </div>
 
+              <!-- Nom et email rapides -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <input
+                  type="text"
+                  id="express-nom"
+                  placeholder="Votre nom"
+                  class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
+                />
+                <input
+                  type="email"
+                  id="express-email"
+                  placeholder="Votre email"
+                  class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
+                />
+              </div>
+
               <div class="text-center">
                 <button
-                  onclick="router('devis')"
+                  onclick="startDevisFromExpress()"
                   class="btn-neon bg-primary text-black px-8 py-4 rounded font-tech font-bold uppercase tracking-widest hover:bg-white transition-colors"
                 >
                   Obtenir un devis détaillé
                 </button>
+                <p class="text-gray-500 text-xs mt-3">
+                  Vous serez redirigé vers le formulaire complet pour plus de
+                  précisions
+                </p>
               </div>
             </div>
           </div>
@@ -1947,7 +2047,7 @@
       </section>
 
       <!-- ================= PAGE DEVIS (MULTI-STEP) ================= -->
-      <!-- ================= PAGE DEVIS (MULTI-STEP) ================= -->
+
       <section id="devis" class="page-section">
         <div class="max-w-3xl mx-auto px-4 py-20">
           <div class="text-center mb-10">
@@ -1960,13 +2060,13 @@
             </p>
           </div>
 
-          <!-- Progress Bar (4 étapes) -->
+          <!-- Progress Bar (5 étapes) -->
           <div class="flex justify-between mb-8 relative">
             <div
               class="absolute top-1/2 left-0 w-full h-1 bg-gray-800 -z-10 transform -translate-y-1/2"
             ></div>
             <div
-              class="w-1/4 h-1 bg-primary absolute top-1/2 left-0 transform -translate-y-1/2 transition-all duration-300"
+              class="w-1/5 h-1 bg-primary absolute top-1/2 left-0 transform -translate-y-1/2 transition-all duration-300"
               id="progress-bar"
             ></div>
 
@@ -1989,6 +2089,11 @@
               class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 text-gray-400 font-bold text-sm step-indicator border border-gray-600"
             >
               4
+            </div>
+            <div
+              class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 text-gray-400 font-bold text-sm step-indicator border border-gray-600"
+            >
+              5
             </div>
           </div>
 
@@ -2446,10 +2551,93 @@
                 ></textarea>
               </div>
 
-              <div class="flex justify-between items-center">
+              <div class="flex justify-between">
                 <button
                   type="button"
                   onclick="prevStep(3)"
+                  class="text-gray-400 hover:text-white px-4 py-2"
+                >
+                  ← Retour
+                </button>
+                <button
+                  type="button"
+                  onclick="validateStep4()"
+                  class="btn-neon bg-primary text-black px-6 py-2 rounded font-bold uppercase"
+                >
+                  Suivant
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 5: Modèle de service -->
+            <div class="step-content" id="step5">
+              <h3 class="text-xl text-white font-bold mb-6">
+                5. Modèle de Service
+              </h3>
+
+              <div class="mb-6">
+                <p class="text-gray-400 mb-4">
+                  Choisissez le modèle qui correspond à vos besoins :
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <label
+                    id="label-developpement-unique"
+                    class="flex items-start space-x-3 cursor-pointer p-4 border border-gray-700 rounded-lg hover:bg-white/5"
+                  >
+                    <input
+                      type="radio"
+                      name="modele_service"
+                      value="developpement_unique"
+                      class="form-radio text-primary h-5 w-5 mt-1"
+                    />
+                    <div>
+                      <span class="font-bold text-white"
+                        >Développement Unique</span
+                      >
+                      <p class="text-gray-400 text-sm mt-1">
+                        Paiement unique après validation
+                      </p>
+                      <ul class="text-gray-500 text-xs mt-2 space-y-1">
+                        <li>✓ Site développé sur mesure</li>
+                        <li>✓ Formation à la gestion</li>
+                        <li>✓ Hébergement géré par vous</li>
+                        <li>✓ À partir de 399€</li>
+                      </ul>
+                    </div>
+                  </label>
+
+                  <label
+                    id="label-abonnement-tout-inclus"
+                    class="flex items-start space-x-3 cursor-pointer p-4 border border-gray-700 rounded-lg hover:bg-white/5"
+                  >
+                    <input
+                      type="radio"
+                      name="modele_service"
+                      value="abonnement_tout_inclus"
+                      class="form-radio text-secondary h-5 w-5 mt-1"
+                    />
+                    <div>
+                      <span class="font-bold text-white"
+                        >Abonnement Tout-Inclus</span
+                      >
+                      <p class="text-gray-400 text-sm mt-1">
+                        Tout inclus, pas de soucis
+                      </p>
+                      <ul class="text-gray-500 text-xs mt-2 space-y-1">
+                        <li>✓ Site développé sur mesure</li>
+                        <li>✓ Hébergement haute performance</li>
+                        <li>✓ Maintenance illimitée</li>
+                        <li>✓ À partir de 69€/mois</li>
+                      </ul>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <button
+                  type="button"
+                  onclick="prevStep(4)"
                   class="text-gray-400 hover:text-white px-4 py-2"
                 >
                   ← Retour
