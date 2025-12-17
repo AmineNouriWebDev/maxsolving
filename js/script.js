@@ -1001,3 +1001,10 @@ async function submitDevisForm() {
     submitBtn.textContent = 'Envoyer ma demande';
   }
 }
+function showSuccessNotification() {
+  alert("✅ Votre demande a été envoyée avec succès !");
+}
+
+function showErrorNotification() {
+  alert("❌ Une erreur est survenue. Veuillez réessayer ou nous contacter directement.");
+}
