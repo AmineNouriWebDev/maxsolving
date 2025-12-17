@@ -942,231 +942,62 @@ function prefillCurrentStep(stepNumber) {
 }
 
 async function submitDevisForm() {
-  // Récupérer le modèle de service
   const modeleService = document.querySelector('input[name="modele_service"]:checked')?.value;
-  
+
   if (!modeleService) {
-    alert('Veuillez sélectionner un modèle de service (Développement Unique ou Abonnement Tout-Inclus)');
-    return false;
-  
-   try {
-    const response = await fetch(getN8nWebhookURL(), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    });
-    
-    if (response.ok) {
-      showSuccessNotification();
-    }
-  } catch (error) {
-    showErrorNotification();
+    alert('Veuillez sélectionner un modèle de service');
+    return;
   }
-  }
-  
-  // Construire l'objet de données
+
   const formData = {
-    // Étape 1
     nom: document.getElementById('nom').value,
     entreprise: document.getElementById('entreprise').value,
     email: document.getElementById('email').value,
     telephone: document.getElementById('telephone').value,
-    
-    // Étape 2
+
     types_projet: Array.from(document.querySelectorAll('input[name="type_projet"]:checked'))
       .map(cb => cb.value),
-    
-    // Étape 3
-    logo: document.querySelector('input[name="logo"]:checked')?.value || '',
-    charte: document.querySelector('input[name="charte"]:checked')?.value || '',
-    photos: document.querySelector('input[name="photos"]:checked')?.value || '',
-    domaine: document.querySelector('input[name="domaine"]:checked')?.value || '',
-    hebergement: document.querySelector('input[name="hebergement"]:checked')?.value || '',
-    referencement: document.querySelector('input[name="referencement"]:checked')?.value || '',
-    reservation: document.querySelector('input[name="reservation"]:checked')?.value || '',
-    paiement_stripe: document.querySelector('input[name="paiement_stripe"]:checked')?.value || '',
-    paiement_paypal: document.querySelector('input[name="paiement_paypal"]:checked')?.value || '',
-    paiement_autre: document.querySelector('input[name="paiement_autre"]:checked')?.value || '',
+
     autres_besoins: document.querySelector('textarea[name="autres_besoins"]').value,
-    
-    // Étape 4
     budget: document.querySelector('input[name="budget"]:checked')?.value || '',
     message: document.getElementById('message').value,
-    
-    // Étape 5
+
     modele_service: modeleService,
-    modele_service_label: modeleService === 'developpement_unique' 
-      ? 'Développement Unique' 
+    modele_service_label: modeleService === 'developpement_unique'
+      ? 'Développement Unique'
       : 'Abonnement Tout-Inclus',
-    
-    // Métadonnées
+
+    source: "formulaire-maxsolving",
     date_soumission: new Date().toISOString(),
-    url_page: window.location.href,
-    
-    // Source du devis
-    source: window.devisPreset?.coordonnees?.nom ? 'devis_express' : 'formulaire_direct',
-    preset_data: window.devisPreset || {}
+    url_page: window.location.href
   };
 
-  // Afficher le bouton de chargement
   const submitBtn = document.querySelector('#step5 button[type="submit"]');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Envoi en cours...';
   submitBtn.disabled = true;
+  submitBtn.textContent = 'Envoi en cours...';
 
-  try {
-   
-    
-    // Envoyer les données à n8n
-    const response = await fetch(n8nWebhookURL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      // Afficher notification Toastify
-      showSuccessNotification();
-      
-      // Réinitialiser le formulaire après 2 secondes
-      setTimeout(() => {
-        document.getElementById('devis-form').reset();
-        // Réinitialiser les styles des labels
-        document.querySelectorAll('label[id^="label-"]').forEach(label => {
-          label.style.borderColor = '';
-          label.style.background = '';
-        });
-        nextStep(1);
-        currentStep = 1;
-        window.devisPreset = {};
-      }, 2000);
-    } else {
-      throw new Error('Erreur lors de l\'envoi');
-    }
-  } catch (error) {
-    console.error('Erreur:', error);
-    showErrorNotification();
-  } finally {
-    // Restaurer le bouton
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  }
-}
-
-function showSuccessNotification() {
-  // Utiliser Toastify si disponible
-  if (typeof Toastify !== 'undefined') {
-    Toastify({
-      text: "✅ Demande envoyée avec succès ! Vous recevrez un email de confirmation.",
-      duration: 5000,
-      gravity: "top",
-      position: "right",
-      backgroundColor: "#10B981",
-      className: "toastify-success"
-    }).showToast();
-  } else {
-    // Fallback simple
-    alert('✅ Demande envoyée avec succès ! Vous recevrez un email de confirmation.');
-  }
-}
-
-function showErrorNotification() {
-  if (typeof Toastify !== 'undefined') {
-    Toastify({
-      text: "❌ Une erreur est survenue. Veuillez réessayer ou nous contacter directement.",
-      duration: 5000,
-      gravity: "top",
-      position: "right",
-      backgroundColor: "#EF4444",
-      className: "toastify-error"
-    }).showToast();
-  } else {
-    alert('❌ Une erreur est survenue. Veuillez réessayer ou nous contacter directement.');
-  }
-}
-
-// Fonction pour montrer des toasts
-function showToast(message, type = 'info') {
-  if (typeof Toastify !== 'undefined') {
-    Toastify({
-      text: message,
-      duration: 4000,
-      gravity: "top",
-      position: "right",
-      backgroundColor: type === 'info' ? "#3B82F6" : 
-                     type === 'success' ? "#10B981" : 
-                     type === 'error' ? "#EF4444" : "#6B7280",
-      className: "toastify-custom"
-    }).showToast();
-  }
-}
-
-// Initialiser le formulaire au chargement
-document.addEventListener('DOMContentLoaded', function() {
-  // S'assurer que nous sommes sur l'étape 1
-  if (document.getElementById('devis-form')) {
-    updateProgressBar(1);
-    
-    // Si on arrive sur la page devis avec des présélections, les appliquer
-    if (window.location.hash === '#devis' && window.devisPreset && window.devisPreset.modele_service) {
-      setTimeout(() => {
-        prefillDevisFromPreset();
-      }, 500);
-    }
-  }
-});
-// === 10. CONFIGURATION n8n PRODUCTION ===
-const n8nConfig = {
-  test: {
-    url: 'https://n8n.deposark.com/webhook-test/devis-maxsolving',
-    active: true
-  },
-  production: {
-    url: 'https://n8n.deposark.com/webhook/devis-maxsolving',
-    active: false
-  }
-};
-
-// Sélectionnez l'URL active
-const getN8nWebhookURL = () => {
-  return n8nConfig.production.active ? n8nConfig.production.url : n8nConfig.test.url;
-};
-
-async function envoyerDevisN8n(formData) {
   try {
     const response = await fetch("https://n8n.deposark.com/webhook/devis-maxsolving", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        nom: formData.nom,
-        email: formData.email,
-        telephone: formData.telephone || "",
-        entreprise: formData.entreprise || "",
-        modele_service_label: formData.modele_service_label,
-        budget: formData.budget || "",
-        types_projet: formData.types_projet || [],
-        message: formData.message || "",
-        source: "formulaire-devis-maxsolving",
-        date_soumission: new Date().toISOString()
-      })
+      body: JSON.stringify(formData)
     });
 
     if (!response.ok) {
-      throw new Error("Erreur HTTP : " + response.status);
+      throw new Error("Erreur HTTP");
     }
 
-    const result = await response.json();
-    console.log("✅ Devis envoyé à n8n :", result);
+    showSuccessNotification();
+    document.getElementById('devis-form').reset();
+    nextStep(1);
 
-    afficherSucces(); // ton UI success
   } catch (error) {
-    console.error("❌ Erreur envoi devis :", error);
-    afficherErreur(); // ton UI error
+    console.error(error);
+    showErrorNotification();
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Envoyer ma demande';
   }
 }
