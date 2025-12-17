@@ -1002,7 +1002,7 @@ async function submitDevisForm() {
 
   try {
     // URL du webhook n8n (à remplacer par votre URL)
-    const n8nWebhookURL = 'https://n8n.deposark.com/webhook-test/webhook/devis-maxsolving';
+    const n8nWebhookURL = 'https://n8n.deposark.com/webhook/webhook/devis-maxsolving';
     
     // Envoyer les données à n8n
     const response = await fetch(n8nWebhookURL, {
