@@ -1135,3 +1135,38 @@ const n8nConfig = {
 const getN8nWebhookURL = () => {
   return n8nConfig.production.active ? n8nConfig.production.url : n8nConfig.test.url;
 };
+
+async function envoyerDevisN8n(formData) {
+  try {
+    const response = await fetch("https://n8n.deposark.com/webhook/devis-maxsolving", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nom: formData.nom,
+        email: formData.email,
+        telephone: formData.telephone || "",
+        entreprise: formData.entreprise || "",
+        modele_service_label: formData.modele_service_label,
+        budget: formData.budget || "",
+        types_projet: formData.types_projet || [],
+        message: formData.message || "",
+        source: "formulaire-devis-maxsolving",
+        date_soumission: new Date().toISOString()
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error("Erreur HTTP : " + response.status);
+    }
+
+    const result = await response.json();
+    console.log("✅ Devis envoyé à n8n :", result);
+
+    afficherSucces(); // ton UI success
+  } catch (error) {
+    console.error("❌ Erreur envoi devis :", error);
+    afficherErreur(); // ton UI error
+  }
+}
