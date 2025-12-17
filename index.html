@@ -112,6 +112,12 @@
         }
       }
     </script>
+    <!-- Toastify pour les notifications -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="js/data.js"></script>
     <script src="js/portfolio.js"></script>
   </head>
@@ -1941,6 +1947,7 @@
       </section>
 
       <!-- ================= PAGE DEVIS (MULTI-STEP) ================= -->
+      <!-- ================= PAGE DEVIS (MULTI-STEP) ================= -->
       <section id="devis" class="page-section">
         <div class="max-w-3xl mx-auto px-4 py-20">
           <div class="text-center mb-10">
@@ -1948,17 +1955,18 @@
               DEMANDER UN <span class="text-primary">DEVIS</span>
             </h2>
             <p class="text-gray-400 text-sm">
-              Remplissez ce formulaire pour obtenir une estimation précise.
+              Remplissez ce formulaire pour obtenir une estimation précise en 2
+              minutes.
             </p>
           </div>
 
-          <!-- Progress Bar -->
+          <!-- Progress Bar (4 étapes) -->
           <div class="flex justify-between mb-8 relative">
             <div
               class="absolute top-1/2 left-0 w-full h-1 bg-gray-800 -z-10 transform -translate-y-1/2"
             ></div>
             <div
-              class="w-1/3 h-1 bg-primary absolute top-1/2 left-0 transform -translate-y-1/2 transition-all duration-300"
+              class="w-1/4 h-1 bg-primary absolute top-1/2 left-0 transform -translate-y-1/2 transition-all duration-300"
               id="progress-bar"
             ></div>
 
@@ -1977,41 +1985,73 @@
             >
               3
             </div>
+            <div
+              class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 text-gray-400 font-bold text-sm step-indicator border border-gray-600"
+            >
+              4
+            </div>
           </div>
 
           <form
             id="devis-form"
             class="glass p-8 rounded-xl"
-            onsubmit="event.preventDefault();"
+            onsubmit="event.preventDefault(); submitDevisForm();"
           >
             <!-- STEP 1: Info Contact -->
             <div class="step-content active" id="step1">
-              <h3 class="text-xl text-white font-bold mb-6">Vos Coordonnées</h3>
+              <h3 class="text-xl text-white font-bold mb-6">
+                1. Vos Coordonnées
+              </h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Nom & Prénom"
-                  class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
-                />
-                <input
-                  type="text"
-                  placeholder="Nom de l'entreprise"
-                  class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
-                />
-                <input
-                  type="email"
-                  placeholder="Email professionnel"
-                  class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
-                />
-                <input
-                  type="tel"
-                  placeholder="Numéro de téléphone"
-                  class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
-                />
+                <div>
+                  <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    placeholder="Nom & Prénom *"
+                    class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
+                    required
+                  />
+                  <p class="text-red-500 text-xs mt-1 hidden" id="error-nom">
+                    Ce champ est requis
+                  </p>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="entreprise"
+                    name="entreprise"
+                    placeholder="Nom de l'entreprise"
+                    class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email professionnel *"
+                    class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
+                    required
+                  />
+                  <p class="text-red-500 text-xs mt-1 hidden" id="error-email">
+                    Email invalide
+                  </p>
+                </div>
+                <div>
+                  <input
+                    type="tel"
+                    id="telephone"
+                    name="telephone"
+                    placeholder="Numéro de téléphone"
+                    class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none transition-colors"
+                  />
+                </div>
               </div>
               <div class="mt-8 flex justify-end">
                 <button
-                  onclick="nextStep(2)"
+                  type="button"
+                  onclick="validateStep1()"
                   class="btn-neon bg-primary text-black px-6 py-2 rounded font-bold uppercase"
                 >
                   Suivant
@@ -2019,15 +2059,22 @@
               </div>
             </div>
 
-            <!-- STEP 2: Projet -->
+            <!-- STEP 2: Type de Projet -->
             <div class="step-content" id="step2">
-              <h3 class="text-xl text-white font-bold mb-6">Type de Projet</h3>
+              <h3 class="text-xl text-white font-bold mb-6">
+                2. Type de Projet
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">
+                Sélectionnez au moins une option :
+              </p>
               <div class="space-y-4 mb-6">
                 <label
                   class="flex items-center space-x-3 cursor-pointer p-3 border border-gray-700 rounded hover:bg-white/5"
                 >
                   <input
                     type="checkbox"
+                    name="type_projet"
+                    value="site_vitre"
                     class="form-checkbox text-primary h-5 w-5"
                   />
                   <span class="text-gray-300">Site Vitrine (Présentation)</span>
@@ -2037,6 +2084,8 @@
                 >
                   <input
                     type="checkbox"
+                    name="type_projet"
+                    value="ecommerce"
                     class="form-checkbox text-primary h-5 w-5"
                   />
                   <span class="text-gray-300">E-commerce (Vente en ligne)</span>
@@ -2046,6 +2095,19 @@
                 >
                   <input
                     type="checkbox"
+                    name="type_projet"
+                    value="refonte"
+                    class="form-checkbox text-primary h-5 w-5"
+                  />
+                  <span class="text-gray-300">Refonte d'un ancien site</span>
+                </label>
+                <label
+                  class="flex items-center space-x-3 cursor-pointer p-3 border border-gray-700 rounded hover:bg-white/5"
+                >
+                  <input
+                    type="checkbox"
+                    name="type_projet"
+                    value="automation"
                     class="form-checkbox text-secondary h-5 w-5"
                   />
                   <span class="text-gray-300"
@@ -2057,6 +2119,8 @@
                 >
                   <input
                     type="checkbox"
+                    name="type_projet"
+                    value="application"
                     class="form-checkbox text-primary h-5 w-5"
                   />
                   <span class="text-gray-300">Application Web Sur-mesure</span>
@@ -2064,13 +2128,15 @@
               </div>
               <div class="flex justify-between">
                 <button
-                  onclick="nextStep(1)"
-                  class="text-gray-400 hover:text-white px-4"
+                  type="button"
+                  onclick="prevStep(1)"
+                  class="text-gray-400 hover:text-white px-4 py-2"
                 >
-                  Retour
+                  ← Retour
                 </button>
                 <button
-                  onclick="nextStep(3)"
+                  type="button"
+                  onclick="validateStep2()"
                   class="btn-neon bg-primary text-black px-6 py-2 rounded font-bold uppercase"
                 >
                   Suivant
@@ -2078,43 +2144,318 @@
               </div>
             </div>
 
-            <!-- STEP 3: Détails & Envoi -->
+            <!-- STEP 3: Spécifications détaillées -->
             <div class="step-content" id="step3">
               <h3 class="text-xl text-white font-bold mb-6">
-                Derniers Détails
+                3. Spécifications
               </h3>
-              <div class="mb-4">
-                <label class="block text-gray-400 text-sm mb-2"
-                  >Budget Estimé</label
-                >
-                <select
-                  class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none"
-                >
-                  <option>Moins de 1000€</option>
-                  <option>1000€ - 3000€</option>
-                  <option>3000€ - 5000€</option>
-                  <option>Plus de 5000€</option>
-                </select>
+              <p class="text-gray-400 text-sm mb-6">
+                Cochez les éléments dont vous avez besoin :
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Colonne 1 -->
+                <div class="space-y-4">
+                  <div class="p-4 border border-gray-700 rounded-lg">
+                    <h4 class="font-bold text-white mb-3">
+                      Logo & Identité visuelle
+                    </h4>
+                    <div class="space-y-2">
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="logo"
+                          value="besoin"
+                          class="form-radio text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300">J'ai besoin d'un logo</span>
+                      </label>
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="logo"
+                          value="possede"
+                          class="form-radio text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300"
+                          >Je possède déjà un logo</span
+                        >
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="p-4 border border-gray-700 rounded-lg">
+                    <h4 class="font-bold text-white mb-3">Charte graphique</h4>
+                    <div class="space-y-2">
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="charte"
+                          value="besoin"
+                          class="form-radio text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300"
+                          >J'ai besoin d'une charte</span
+                        >
+                      </label>
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="charte"
+                          value="possede"
+                          class="form-radio text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300">Je possède une charte</span>
+                      </label>
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="charte"
+                          value="aucun"
+                          class="form-radio text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300">Je n'en ai pas besoin</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="p-4 border border-gray-700 rounded-lg">
+                    <h4 class="font-bold text-white mb-3">Photos & Contenu</h4>
+                    <div class="space-y-2">
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="photos"
+                          value="fournis"
+                          class="form-radio text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300">Je fournis les photos</span>
+                      </label>
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="photos"
+                          value="besoin"
+                          class="form-radio text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300">J'ai besoin de photos</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Colonne 2 -->
+                <div class="space-y-4">
+                  <div class="p-4 border border-gray-700 rounded-lg">
+                    <h4 class="font-bold text-white mb-3">
+                      Nom de domaine & Hébergement
+                    </h4>
+                    <div class="space-y-2">
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="domaine"
+                          value="1"
+                          class="form-checkbox text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300"
+                          >Réservation de nom de domaine</span
+                        >
+                      </label>
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="hebergement"
+                          value="1"
+                          class="form-checkbox text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300">Hébergement du site</span>
+                      </label>
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="referencement"
+                          value="1"
+                          class="form-checkbox text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300">Référencement (SEO)</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="p-4 border border-gray-700 rounded-lg">
+                    <h4 class="font-bold text-white mb-3">
+                      Fonctionnalités avancées
+                    </h4>
+                    <div class="space-y-2">
+                      <label class="flex items-center space-x-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="reservation"
+                          value="1"
+                          class="form-checkbox text-primary h-4 w-4"
+                        />
+                        <span class="text-gray-300"
+                          >Système de réservation</span
+                        >
+                      </label>
+                      <div class="ml-7 space-y-2">
+                        <p class="text-gray-400 text-sm mb-2">
+                          Paiement en ligne :
+                        </p>
+                        <label
+                          class="flex items-center space-x-3 cursor-pointer"
+                        >
+                          <input
+                            type="checkbox"
+                            name="paiement_stripe"
+                            value="1"
+                            class="form-checkbox text-green-500 h-4 w-4"
+                          />
+                          <span class="text-gray-300">Stripe</span>
+                        </label>
+                        <label
+                          class="flex items-center space-x-3 cursor-pointer"
+                        >
+                          <input
+                            type="checkbox"
+                            name="paiement_paypal"
+                            value="1"
+                            class="form-checkbox text-blue-500 h-4 w-4"
+                          />
+                          <span class="text-gray-300">PayPal</span>
+                        </label>
+                        <label
+                          class="flex items-center space-x-3 cursor-pointer"
+                        >
+                          <input
+                            type="checkbox"
+                            name="paiement_autre"
+                            value="1"
+                            class="form-checkbox text-purple-500 h-4 w-4"
+                          />
+                          <span class="text-gray-300">Autre (à préciser)</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-4 border border-gray-700 rounded-lg">
+                    <h4 class="font-bold text-white mb-3">Autres besoins</h4>
+                    <textarea
+                      name="autres_besoins"
+                      placeholder="Autres fonctionnalités ou précisions..."
+                      rows="3"
+                      class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none text-sm"
+                    ></textarea>
+                  </div>
+                </div>
               </div>
+
+              <div class="flex justify-between">
+                <button
+                  type="button"
+                  onclick="prevStep(2)"
+                  class="text-gray-400 hover:text-white px-4 py-2"
+                >
+                  ← Retour
+                </button>
+                <button
+                  type="button"
+                  onclick="validateStep3()"
+                  class="btn-neon bg-primary text-black px-6 py-2 rounded font-bold uppercase"
+                >
+                  Suivant
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Budget & Message -->
+            <div class="step-content" id="step4">
+              <h3 class="text-xl text-white font-bold mb-6">
+                4. Budget & Message
+              </h3>
+
               <div class="mb-6">
-                <label class="block text-gray-400 text-sm mb-2"
+                <label class="block text-white mb-3 font-bold"
+                  >Budget estimé *</label
+                >
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <label
+                    class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-700 rounded-lg hover:bg-white/5"
+                  >
+                    <input
+                      type="radio"
+                      name="budget"
+                      value="moins_500"
+                      class="form-radio text-primary h-5 w-5"
+                      required
+                    />
+                    <div>
+                      <span class="font-bold text-white">Moins de 500€</span>
+                      <p class="text-gray-400 text-sm">Site vitrine simple</p>
+                    </div>
+                  </label>
+                  <label
+                    class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-700 rounded-lg hover:bg-white/5"
+                  >
+                    <input
+                      type="radio"
+                      name="budget"
+                      value="500_1000"
+                      class="form-radio text-primary h-5 w-5"
+                      required
+                    />
+                    <div>
+                      <span class="font-bold text-white">500€ - 1000€</span>
+                      <p class="text-gray-400 text-sm">
+                        Site avec fonctionnalités
+                      </p>
+                    </div>
+                  </label>
+                  <label
+                    class="flex items-center space-x-3 cursor-pointer p-4 border border-gray-700 rounded-lg hover:bg-white/5"
+                  >
+                    <input
+                      type="radio"
+                      name="budget"
+                      value="plus_1000"
+                      class="form-radio text-primary h-5 w-5"
+                      required
+                    />
+                    <div>
+                      <span class="font-bold text-white">Plus de 1000€</span>
+                      <p class="text-gray-400 text-sm">
+                        Projet complexe/e-commerce
+                      </p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-white mb-3 font-bold"
                   >Message libre</label
                 >
                 <textarea
+                  id="message"
+                  name="message"
                   rows="4"
-                  placeholder="Décrivez votre projet..."
-                  class="w-full bg-black/30 border border-gray-700 rounded p-3 text-white focus:border-primary focus:outline-none"
+                  placeholder="Décrivez votre projet, vos attentes, vos contraintes..."
+                  class="w-full bg-black/30 border border-gray-700 rounded p-4 text-white focus:border-primary focus:outline-none"
                 ></textarea>
               </div>
+
               <div class="flex justify-between items-center">
                 <button
-                  onclick="nextStep(2)"
-                  class="text-gray-400 hover:text-white px-4"
+                  type="button"
+                  onclick="prevStep(3)"
+                  class="text-gray-400 hover:text-white px-4 py-2"
                 >
-                  Retour
+                  ← Retour
                 </button>
                 <button
-                  onclick="alert('Merci ! Votre demande a été simulée (Prototype).')"
+                  type="submit"
                   class="btn-neon bg-green-500 text-black px-8 py-3 rounded font-bold uppercase hover:bg-green-400"
                 >
                   Envoyer la demande
@@ -2122,9 +2463,14 @@
               </div>
             </div>
           </form>
+
+          <div class="mt-8 text-center text-gray-500 text-sm">
+            <p>✓ Votre demande sera traitée sous 24h maximum</p>
+            <p>✓ Vous recevrez un email de confirmation</p>
+            <p>✓ Pas de spam, seulement des infos utiles</p>
+          </div>
         </div>
       </section>
-
       <!-- ================= PAGE CONTACT ================= -->
       <section id="contact" class="page-section">
         <div class="max-w-6xl mx-auto px-4 py-20">
@@ -2366,78 +2712,196 @@
     <script src="js/script.js"></script>
     <script src="js/animation.js"></script>
     <!-- Modal Chat IA -->
+    <!-- Modal Chat IA Optimisé -->
     <div
       id="chat-modal"
-      class="fixed inset-0 z-[1000] hidden items-center justify-center p-4"
+      class="fixed inset-0 z-[1000] hidden items-center justify-center p-0 md:p-4"
     >
-      <div class="fixed inset-0 bg-black/80" onclick="closeChatModal()"></div>
+      <div
+        class="fixed inset-0 bg-black/90 backdrop-blur-sm"
+        onclick="closeChatModal()"
+      ></div>
 
       <div
-        class="relative bg-bgDark rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto glass border border-white/10"
+        class="relative bg-bgDark md:rounded-2xl w-full h-full md:max-w-2xl md:max-h-[80vh] md:h-auto flex flex-col glass border-0 md:border border-white/10 md:shadow-2xl"
       >
-        <button
-          onclick="closeChatModal()"
-          class="absolute top-4 right-4 text-white hover:text-primary z-10"
+        <!-- Header -->
+        <div
+          class="flex items-center justify-between p-4 md:p-6 border-b border-white/10 bg-black/30"
         >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-white font-tech mb-4">
-            💬 Chat avec MaxSolving
-          </h3>
-          <p class="text-gray-400 mb-6">
-            Posez-moi vos questions sur nos services, tarifs, délais, etc.
-          </p>
-
-          <!-- Messages du chat -->
-          <div
-            id="chat-messages"
-            class="space-y-4 mb-6 max-h-[40vh] overflow-y-auto"
-          >
-            <div class="text-right">
-              <div
-                class="inline-block bg-primary/20 text-white p-3 rounded-lg max-w-[80%]"
-              >
-                Bonjour ! Je suis l'assistant IA de MaxSolving. Comment puis-je
-                vous aider ?
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 bg-gradient-to-r from-primary to-blue-500 rounded-full flex items-center justify-center"
+            >
+              <span class="text-white font-bold">MS</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white font-tech">
+                💬 Assistant MaxSolving
+              </h3>
+              <div class="flex items-center gap-2">
+                <div
+                  class="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+                ></div>
+                <p class="text-gray-400 text-xs">
+                  En ligne • Réponses instantanées
+                </p>
               </div>
-              <p class="text-xs text-gray-500 mt-1">MaxSolving AI</p>
             </div>
           </div>
 
-          <!-- Input du chat -->
+          <button
+            onclick="closeChatModal()"
+            class="text-white hover:text-primary transition-colors p-2"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Zone des messages -->
+        <div
+          id="chat-messages"
+          class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 bg-gradient-to-b from-black/20 to-transparent"
+        >
+          <!-- Message d'accueil -->
+          <div class="chat-message ai-message animate-fadeIn">
+            <div class="flex items-start gap-3">
+              <div
+                class="w-8 h-8 bg-gradient-to-r from-primary to-blue-500 rounded-full flex items-center justify-center flex-shrink-0"
+              >
+                <span class="text-xs font-bold">MS</span>
+              </div>
+              <div>
+                <div
+                  class="bg-gradient-to-r from-primary/20 to-blue-500/20 backdrop-blur-sm border border-primary/30 text-white p-4 rounded-2xl rounded-tl-none max-w-[85%]"
+                >
+                  <p class="font-medium">
+                    Bonjour ! 👋 Je suis l'assistant IA de MaxSolving.
+                  </p>
+                  <p class="mt-2 text-gray-300 text-sm">
+                    Je peux vous renseigner sur :
+                  </p>
+                  <ul class="mt-2 space-y-1 text-sm text-gray-300">
+                    <li>• Nos services & tarifs</li>
+                    <li>• Délais de réalisation</li>
+                    <li>• Technologies utilisées</li>
+                    <li>• Portfolio et réalisations</li>
+                    <li>• Modalités de paiement</li>
+                  </ul>
+                  <p class="mt-3 text-primary font-tech text-sm">
+                    Comment puis-je vous aider aujourd'hui ?
+                  </p>
+                </div>
+                <p class="text-xs text-gray-500 mt-2 ml-1">
+                  MaxSolving AI • Maintenant
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Indicateur de saisie (caché par défaut) -->
+          <div id="typing-indicator" class="chat-message ai-message hidden">
+            <div class="flex items-start gap-3">
+              <div
+                class="w-8 h-8 bg-gradient-to-r from-primary to-blue-500 rounded-full flex items-center justify-center flex-shrink-0"
+              >
+                <span class="text-xs font-bold">MS</span>
+              </div>
+              <div>
+                <div
+                  class="bg-gradient-to-r from-primary/20 to-blue-500/20 backdrop-blur-sm border border-primary/30 text-white p-4 rounded-2xl rounded-tl-none max-w-[85%]"
+                >
+                  <div class="flex items-center gap-2">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zone de saisie -->
+        <div class="border-t border-white/10 bg-black/30 p-4">
           <div class="flex gap-2">
             <input
               type="text"
               id="chat-input"
-              placeholder="Tapez votre message..."
-              class="flex-1 bg-black/30 border border-gray-700 rounded-lg p-3 text-white focus:border-primary focus:outline-none"
-              onkeypress="if(event.key === 'Enter') sendChatMessage()"
+              placeholder="Tapez votre message ici..."
+              class="flex-1 bg-black/50 border border-gray-700 rounded-xl p-4 text-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 placeholder-gray-500 text-base"
+              autocomplete="off"
+              onkeypress="if(event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); sendChatMessage(); }"
             />
             <button
+              id="send-button"
               onclick="sendChatMessage()"
-              class="btn-neon bg-primary text-black px-6 py-3 rounded font-tech font-bold uppercase hover:bg-white transition-colors"
+              class="btn-neon bg-gradient-to-r from-primary to-blue-500 text-white px-5 md:px-6 py-4 rounded-xl font-tech font-bold uppercase hover:opacity-90 transition-all active:scale-95 min-w-[60px] flex items-center justify-center"
             >
-              Envoyer
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                />
+              </svg>
+              <span class="hidden md:inline ml-2">Envoyer</span>
             </button>
           </div>
 
-          <p class="text-gray-500 text-sm mt-4">
-            💡 L'IA peut faire des erreurs. Pour un devis précis, utilisez le
-            formulaire.
+          <div class="flex flex-wrap gap-2 mt-3">
+            <button
+              onclick="insertQuickQuestion('Quels sont vos tarifs ?')"
+              class="text-xs bg-white/5 hover:bg-primary/20 text-gray-400 hover:text-primary px-3 py-1.5 rounded-full transition-colors"
+            >
+              💰 Tarifs
+            </button>
+            <button
+              onclick="insertQuickQuestion('Quels sont vos délais ?')"
+              class="text-xs bg-white/5 hover:bg-primary/20 text-gray-400 hover:text-primary px-3 py-1.5 rounded-full transition-colors"
+            >
+              ⏱️ Délais
+            </button>
+            <button
+              onclick="insertQuickQuestion('Quels services proposez-vous ?')"
+              class="text-xs bg-white/5 hover:bg-primary/20 text-gray-400 hover:text-primary px-3 py-1.5 rounded-full transition-colors"
+            >
+              🛠️ Services
+            </button>
+            <button
+              onclick="insertQuickQuestion('Avez-vous des exemples de projets ?')"
+              class="text-xs bg-white/5 hover:bg-primary/20 text-gray-400 hover:text-primary px-3 py-1.5 rounded-full transition-colors"
+            >
+              📁 Portfolio
+            </button>
+          </div>
+
+          <p class="text-gray-500 text-xs text-center mt-3">
+            💡 Pour un devis précis, utilisez notre
+            <button
+              onclick="closeChatModal(); router('devis');"
+              class="text-primary hover:underline"
+            >
+              formulaire détaillé
+            </button>
           </p>
         </div>
       </div>
