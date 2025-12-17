@@ -948,6 +948,22 @@ async function submitDevisForm() {
   if (!modeleService) {
     alert('Veuillez sélectionner un modèle de service (Développement Unique ou Abonnement Tout-Inclus)');
     return false;
+  
+   try {
+    const response = await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+    
+    if (response.ok) {
+      showSuccessNotification();
+    }
+  } catch (error) {
+    showErrorNotification();
+  }
   }
   
   // Construire l'objet de données
@@ -1002,7 +1018,7 @@ async function submitDevisForm() {
 
   try {
     // URL du webhook n8n (à remplacer par votre URL)
-    const n8nWebhookURL = 'https://n8n.deposark.com/webhook/webhook/devis-maxsolving';
+    const N8N_WEBHOOK_URL = 'https://n8n.deposark.com/webhook/devis-maxsolving';
     
     // Envoyer les données à n8n
     const response = await fetch(n8nWebhookURL, {
