@@ -949,24 +949,53 @@ async function submitDevisForm() {
     return;
   }
 
+  // Collecte de TOUTES les données du formulaire
   const formData = {
+    // Étape 1 : Coordonnées
     nom: document.getElementById('nom').value,
     entreprise: document.getElementById('entreprise').value,
     email: document.getElementById('email').value,
     telephone: document.getElementById('telephone').value,
 
+    // Étape 2 : Type de projet
     types_projet: Array.from(document.querySelectorAll('input[name="type_projet"]:checked'))
       .map(cb => cb.value),
 
+    // Étape 3 : Spécifications détaillées
+    // Logo
+    logo: document.querySelector('input[name="logo"]:checked')?.value || '',
+    
+    // Charte graphique
+    charte: document.querySelector('input[name="charte"]:checked')?.value || '',
+    
+    // Photos & Contenu
+    photos: document.querySelector('input[name="photos"]:checked')?.value || '',
+    
+    // Nom de domaine & Hébergement
+    domaine: document.querySelector('input[name="domaine"]:checked') ? 'Oui' : 'Non',
+    hebergement: document.querySelector('input[name="hebergement"]:checked') ? 'Oui' : 'Non',
+    referencement: document.querySelector('input[name="referencement"]:checked') ? 'Oui' : 'Non',
+    
+    // Fonctionnalités avancées
+    reservation: document.querySelector('input[name="reservation"]:checked') ? 'Oui' : 'Non',
+    paiement_stripe: document.querySelector('input[name="paiement_stripe"]:checked') ? 'Oui' : 'Non',
+    paiement_paypal: document.querySelector('input[name="paiement_paypal"]:checked') ? 'Oui' : 'Non',
+    paiement_autre: document.querySelector('input[name="paiement_autre"]:checked') ? 'Oui' : 'Non',
+    
+    // Autres besoins
     autres_besoins: document.querySelector('textarea[name="autres_besoins"]').value,
+
+    // Étape 4 : Budget & Message
     budget: document.querySelector('input[name="budget"]:checked')?.value || '',
     message: document.getElementById('message').value,
 
+    // Étape 5 : Modèle de service
     modele_service: modeleService,
     modele_service_label: modeleService === 'developpement_unique'
       ? 'Développement Unique'
       : 'Abonnement Tout-Inclus',
 
+    // Métadonnées
     source: "formulaire-maxsolving",
     date_soumission: new Date().toISOString(),
     url_page: window.location.href
