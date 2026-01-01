@@ -1,0 +1,10 @@
+/* TEAM */
+Owner: MaxSolving
+Contact: contact@maxsolving.com
+Website: https://maxsolving.com
+Twitter: @maxsolving
+
+/* SITE */
+Last update: 2026-01-01
+Standards: HTML5, CSS3
+Components: Three.js, Tailwind CSS, Swiper
