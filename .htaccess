@@ -1,0 +1,231 @@
+# .htaccess optimisé pour MaxSolving - Décembre 2025
+# Performance, Sécurité et SEO
+
+# =====================================================
+# 1. REDIRECTION HTTPS (OBLIGATOIRE EN 2025)
+# =====================================================
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# =====================================================
+# 2. REDIRECTION WWW vers non-WWW (ou inverse)
+# =====================================================
+# Choisissez UNE seule option :
+
+# Option A : Redirection www vers non-www (RECOMMANDÉ)
+RewriteCond %{HTTP_HOST} ^www\.maxsolving\.com [NC]
+RewriteRule ^(.*)$ https://maxsolving.com/$1 [R=301,L]
+
+# Option B : Redirection non-www vers www (ALTERNATIVE)
+# RewriteCond %{HTTP_HOST} ^maxsolving\.com [NC]
+# RewriteRule ^(.*)$ https://www.maxsolving.com/$1 [R=301,L]
+
+# =====================================================
+# 3. COMPRESSION GZIP - CORE WEB VITALS 2025
+# =====================================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/atom_xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/truetype
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-font-woff
+</IfModule>
+
+# =====================================================
+# 4. MISE EN CACHE NAVIGATEUR - VITESSE DE CHARGEMENT
+# =====================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # CSS et JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  
+  # Polices
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/x-font-woff "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  
+  # HTML et données
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType application/json "access plus 1 hour"
+  ExpiresByType application/xml "access plus 1 hour"
+</IfModule>
+
+# Cache-Control Headers
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+  
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+  
+  <FilesMatch "\.(woff|woff2|ttf|eot)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+</IfModule>
+
+# =====================================================
+# 5. SÉCURITÉ - PROTECTION CONTRE LES ATTAQUES
+# =====================================================
+<IfModule mod_headers.c>
+  # Protection XSS
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Empêcher le sniffing MIME
+  Header set X-Content-Type-Options "nosniff"
+  
+  # Protection contre le clickjacking
+  Header always append X-Frame-Options SAMEORIGIN
+  
+  # Content Security Policy (CSP)
+  Header set Content-Security-Policy "default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:; font-src 'self' https: data:;"
+  
+  # Strict Transport Security (HSTS)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # Referrer Policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Permissions Policy
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Bloquer l'accès aux fichiers sensibles
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
+  Require all denied
+</FilesMatch>
+
+# Protéger le .htaccess lui-même
+<Files .htaccess>
+  Require all denied
+</Files>
+
+# Protéger wp-config.php (si WordPress)
+<Files wp-config.php>
+  Require all denied
+</Files>
+
+# =====================================================
+# 6. OPTIMISATION IMAGES - FORMATS MODERNES
+# =====================================================
+# Servir WebP si disponible
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+  RewriteRule ^(.*)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header append Vary Accept env=REDIRECT_accept
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+# =====================================================
+# 7. URL REWRITING - CLEAN URLs
+# =====================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Retirer les trailing slashes (sauf pour les dossiers)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [R=301,L]
+  
+  # Bloquer l'accès aux dossiers cachés
+  RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# =====================================================
+# 8. CHARSET ET ENCODAGE
+# =====================================================
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .xml .json .rss .atom
+
+# =====================================================
+# 9. TYPES MIME POUR NOUVEAUX FORMATS
+# =====================================================
+<IfModule mod_mime.c>
+  # Formats modernes
+  AddType application/font-woff2 .woff2
+  AddType application/javascript .js
+  AddType application/json .json
+  AddType image/svg+xml .svg .svgz
+  AddType image/webp .webp
+  AddType image/avif .avif
+  
+  # Compression SVG
+  AddEncoding gzip .svgz
+</IfModule>
+
+# =====================================================
+# 10. DÉSACTIVER LA LISTE DES RÉPERTOIRES
+# =====================================================
+Options -Indexes
+
+# =====================================================
+# 11. PAGE D'ERREUR PERSONNALISÉE
+# =====================================================
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+ErrorDocument 500 /500.html
+
+# =====================================================
+# 12. PROTECTION HOTLINK IMAGES
+# =====================================================
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?maxsolving\.com [NC]
+  RewriteRule \.(jpg|jpeg|png|gif|webp|svg)$ - [F,NC,L]
+</IfModule>
+
+# =====================================================
+# 13. OPTIMISATION PHP (si applicable)
+# =====================================================
+<IfModule mod_php.c>
+  php_value upload_max_filesize 64M
+  php_value post_max_size 64M
+  php_value max_execution_time 300
+  php_value max_input_time 300
+  php_value memory_limit 256M
+</IfModule>
+
+# =====================================================
+# FIN DU FICHIER
+# Dernière mise à jour : 29/12/2025
+# MaxSolving - https://maxsolving.com
+# =====================================================

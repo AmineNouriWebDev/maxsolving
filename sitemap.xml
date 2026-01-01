@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  
+  <!-- Page d'accueil - Priorité maximale -->
+  <url>
+    <loc>https://maxsolving.com/</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/logo2.png</image:loc>
+      <image:title>MaxSolving - Développement Web &amp; Automation IA</image:title>
+    </image:image>
+  </url>
+
+  <!-- Page Services -->
+  <url>
+    <loc>https://maxsolving.com/#services</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Page Portfolio -->
+  <url>
+    <loc>https://maxsolving.com/#portfolio</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Page À Propos -->
+  <url>
+    <loc>https://maxsolving.com/#about</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Page Contact -->
+  <url>
+    <loc>https://maxsolving.com/#contact</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Page Devis -->
+  <url>
+    <loc>https://maxsolving.com/#devis</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog (si disponible) -->
+  <url>
+    <loc>https://blog.maxsolving.com/</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
