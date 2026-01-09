@@ -435,3 +435,77 @@ body.menu-open {
     font-weight: 500;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
+
+/* ===== SARAH AI STYLES 2026 ===== */
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+.animate-pulse-slow { animation: pulse-slow 3s infinite; }
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); }
+}
+.animate-glow { animation: glow 2s infinite; }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.3s ease-out; }
+
+/* Modal animations */
+#sarah-modal {
+  transform-origin: bottom right;
+  animation: modal-appear 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Glassmorphism 2.0 */
+.glass-organic {
+  background: rgba(3, 0, 20, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.36),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Message bubbles */
+.message-bubble-ai {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.message-bubble-user {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Scrollbar personnalisée */
+#sarah-messages::-webkit-scrollbar {
+  width: 6px;
+}
+#sarah-messages::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+#sarah-messages::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00F0FF, #8B5CF6);
+  border-radius: 3px;
+}

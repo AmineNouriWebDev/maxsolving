@@ -3255,148 +3255,214 @@
     </script>
     <!-- Vos Scripts JS -->
     <script src="js/script.js"></script>
+    <script src="js/sarah.js"></script>
     <script src="js/animation.js"></script>
-    <!-- Modal Chat IA -->
-    <!-- Modal Chat IA Optimisé -->
-    <div
-      id="chat-modal"
-      class="fixed inset-0 z-[1000] hidden items-center justify-center p-0 md:p-4"
-    >
-      <div
-        class="fixed inset-0 bg-black/90 backdrop-blur-sm"
-        onclick="closeChatModal()"
-      ></div>
 
+    <!-- Modal Chat IA Optimisé -->
+    <!-- Sarah AI Assistant - Dynamic Island -->
+    <div id="sarah-container" class="fixed bottom-6 right-6 z-[9999]">
+      <!-- Bubble état fermé -->
       <div
-        class="relative bg-bgDark md:rounded-2xl w-full h-full md:max-w-2xl md:max-h-[80vh] md:h-auto flex flex-col glass border-0 md:border border-white/10 md:shadow-2xl"
+        id="sarah-bubble"
+        class="relative cursor-pointer group"
+        onclick="openSarahModal()"
       >
-        <!-- Header -->
+        <div class="relative">
+          <!-- Avatar avec halo -->
+          <div
+            class="w-16 h-16 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 p-0.5 backdrop-blur-sm border-2 border-white/20 animate-pulse-slow"
+          >
+            <img
+              src="img/sarah/sarah-icon.png"
+              alt="Sarah AI Assistant"
+              class="w-full h-full rounded-full object-cover border-2 border-bgDark"
+            />
+          </div>
+
+          <!-- Badge en ligne -->
+          <div
+            class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-bgDark animate-pulse"
+          ></div>
+
+          <!-- Tooltip -->
+          <div
+            class="absolute -top-12 right-0 bg-black/90 backdrop-blur-md px-3 py-2 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+          >
+            <p class="text-xs font-tech text-primary">Sarah AI • En ligne</p>
+            <div
+              class="absolute -bottom-1 right-3 w-2 h-2 bg-black/90 rotate-45"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal étendu (Glassmorphism 2.0) -->
+      <div
+        id="sarah-modal"
+        class="fixed inset-0 md:inset-auto md:bottom-24 md:right-6 md:w-96 md:h-[600px] z-[10000] hidden flex-col bg-gradient-to-br from-black/80 to-bgDark/90 backdrop-blur-xl border border-white/20 rounded-3xl overflow-hidden shadow-2xl shadow-primary/20"
+      >
+        <!-- Header organique -->
         <div
-          class="flex items-center justify-between p-4 md:p-6 border-b border-white/10 bg-black/30"
+          class="relative p-6 pb-4 bg-gradient-to-r from-primary/10 to-secondary/10 border-b border-white/10"
         >
           <div class="flex items-center gap-3">
-            <div
-              class="w-10 h-10 bg-gradient-to-r from-primary to-blue-500 rounded-full flex items-center justify-center"
-            >
-              <span class="text-white font-bold">MS</span>
+            <!-- Avatar avec effet de lumière -->
+            <div class="relative">
+              <div
+                class="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-secondary p-0.5 animate-glow"
+              >
+                <img
+                  src="img/sarah/sarah-avatar-circle.png"
+                  alt="Sarah"
+                  class="w-full h-full rounded-full object-cover border-2 border-white/20"
+                />
+              </div>
+              <div
+                class="absolute -inset-1 bg-primary/20 rounded-full blur-xl -z-10"
+              ></div>
             </div>
-            <div>
-              <h3 class="text-lg font-bold text-white font-tech">
-                💬 Assistant MaxSolving
-              </h3>
-              <div class="flex items-center gap-2">
-                <div
+
+            <div class="flex-1">
+              <h3 class="font-bold text-white text-lg font-tech">Sarah</h3>
+              <p class="text-primary text-sm flex items-center gap-2">
+                <span
                   class="w-2 h-2 bg-green-500 rounded-full animate-pulse"
-                ></div>
-                <p class="text-gray-400 text-xs">
-                  En ligne • Réponses instantanées
-                </p>
-              </div>
+                ></span>
+                Assistante IA MaxSolving • En ligne
+              </p>
             </div>
-          </div>
 
-          <button
-            onclick="closeChatModal()"
-            class="text-white hover:text-primary transition-colors p-2"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Zone des messages -->
-        <div
-          id="chat-messages"
-          class="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 bg-gradient-to-b from-black/20 to-transparent"
-        >
-          <!-- Message d'accueil -->
-          <div class="chat-message ai-message animate-fadeIn">
-            <div class="flex items-start gap-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-r from-primary to-blue-500 rounded-full flex items-center justify-center flex-shrink-0"
-              >
-                <span class="text-xs font-bold">MS</span>
-              </div>
-              <div>
-                <div
-                  class="bg-gradient-to-r from-primary/20 to-blue-500/20 backdrop-blur-sm border border-primary/30 text-white p-4 rounded-2xl rounded-tl-none max-w-[85%]"
-                >
-                  <p class="font-medium">
-                    Bonjour ! 👋 Je suis l'assistant IA de MaxSolving.
-                  </p>
-                  <p class="mt-2 text-gray-300 text-sm">
-                    Je peux vous renseigner sur :
-                  </p>
-                  <ul class="mt-2 space-y-1 text-sm text-gray-300">
-                    <li>• Nos services & tarifs</li>
-                    <li>• Délais de réalisation</li>
-                    <li>• Technologies utilisées</li>
-                    <li>• Portfolio et réalisations</li>
-                    <li>• Modalités de paiement</li>
-                  </ul>
-                  <p class="mt-3 text-primary font-tech text-sm">
-                    Comment puis-je vous aider aujourd'hui ?
-                  </p>
-                </div>
-                <p class="text-xs text-gray-500 mt-2 ml-1">
-                  MaxSolving AI • Maintenant
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Indicateur de saisie (caché par défaut) -->
-          <div id="typing-indicator" class="chat-message ai-message hidden">
-            <div class="flex items-start gap-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-r from-primary to-blue-500 rounded-full flex items-center justify-center flex-shrink-0"
-              >
-                <span class="text-xs font-bold">MS</span>
-              </div>
-              <div>
-                <div
-                  class="bg-gradient-to-r from-primary/20 to-blue-500/20 backdrop-blur-sm border border-primary/30 text-white p-4 rounded-2xl rounded-tl-none max-w-[85%]"
-                >
-                  <div class="flex items-center gap-2">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Zone de saisie -->
-        <div class="border-t border-white/10 bg-black/30 p-4">
-          <div class="flex gap-2">
-            <input
-              type="text"
-              id="chat-input"
-              placeholder="Tapez votre message ici..."
-              class="flex-1 bg-black/50 border border-gray-700 rounded-xl p-4 text-white focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 placeholder-gray-500 text-base"
-              autocomplete="off"
-              onkeypress="if(event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); sendChatMessage(); }"
-            />
             <button
-              id="send-button"
-              onclick="sendChatMessage()"
-              class="btn-neon bg-gradient-to-r from-primary to-blue-500 text-white px-5 md:px-6 py-4 rounded-xl font-tech font-bold uppercase hover:opacity-90 transition-all active:scale-95 min-w-[60px] flex items-center justify-center"
+              onclick="closeSarahModal()"
+              class="text-white/60 hover:text-white p-2 rounded-full hover:bg-white/10"
             >
               <svg
-                class="w-5 h-5"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Messages zone (avec dégradé organique) -->
+        <div
+          id="sarah-messages"
+          class="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-transparent to-black/30"
+        >
+          <!-- Message d'accueil -->
+          <div class="flex gap-3 animate-fade-in">
+            <div class="flex-shrink-0">
+              <div
+                class="w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center"
+              >
+                <span class="text-xs text-primary font-bold">S</span>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div
+                class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl rounded-tl-none p-4"
+              >
+                <p class="text-white">
+                  👋 Bonjour ! Je suis Sarah, l'assistante IA de MaxSolving.
+                </p>
+                <p class="text-gray-300 mt-2">Je peux vous aider avec :</p>
+                <div class="mt-3 grid grid-cols-2 gap-2">
+                  <span
+                    class="text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/30"
+                    >Tarifs & Devis</span
+                  >
+                  <span
+                    class="text-xs px-3 py-1.5 rounded-full bg-secondary/10 text-secondary border border-secondary/30"
+                    >Services</span
+                  >
+                  <span
+                    class="text-xs px-3 py-1.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/30"
+                    >Délais</span
+                  >
+                  <span
+                    class="text-xs px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30"
+                    >Portfolio</span
+                  >
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 mt-1 ml-2">Sarah • Maintenant</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Indicateur de frappe -->
+        <div id="sarah-typing" class="hidden px-4 py-2">
+          <div class="flex items-center gap-2 text-gray-400">
+            <div class="flex gap-1">
+              <div
+                class="w-2 h-2 bg-primary rounded-full animate-bounce"
+                style="animation-delay: 0s"
+              ></div>
+              <div
+                class="w-2 h-2 bg-primary rounded-full animate-bounce"
+                style="animation-delay: 0.2s"
+              ></div>
+              <div
+                class="w-2 h-2 bg-primary rounded-full animate-bounce"
+                style="animation-delay: 0.4s"
+              ></div>
+            </div>
+            <span class="text-sm">Sarah rédige une réponse...</span>
+          </div>
+        </div>
+
+        <!-- Zone de saisie avancée -->
+        <div class="border-t border-white/10 p-4 bg-black/40">
+          <!-- Suggestions rapides -->
+          <div class="flex flex-wrap gap-2 mb-3">
+            <button
+              onclick="askSarah('Quels sont vos tarifs ?')"
+              class="text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-primary/20 text-gray-300 hover:text-primary transition-all"
+            >
+              💰 Tarifs
+            </button>
+            <button
+              onclick="askSarah('Quels délais pour un site ?')"
+              class="text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-green-500/20 text-gray-300 hover:text-green-400 transition-all"
+            >
+              ⏱️ Délais
+            </button>
+            <button
+              onclick="askSarah('Montrez-moi vos réalisations')"
+              class="text-xs px-3 py-1.5 rounded-full bg-white/5 hover:bg-purple-500/20 text-gray-300 hover:text-purple-400 transition-all"
+            >
+              📁 Portfolio
+            </button>
+          </div>
+
+          <!-- Input avec IA -->
+          <div class="relative">
+            <textarea
+              id="sarah-input"
+              placeholder="Posez votre question à Sarah..."
+              rows="2"
+              class="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 resize-none pr-12"
+              onkeydown="if(event.key === 'Enter' && !event.shiftKey) {
+                    event.preventDefault();
+                    sendToSarah();
+                  }"
+            ></textarea>
+
+            <button
+              onclick="sendToSarah()"
+              class="absolute right-3 bottom-3 w-10 h-10 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center hover:opacity-90 transition-opacity"
+            >
+              <svg
+                class="w-5 h-5 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -3408,45 +3474,11 @@
                   d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                 />
               </svg>
-              <span class="hidden md:inline ml-2">Envoyer</span>
             </button>
           </div>
 
-          <div class="flex flex-wrap gap-2 mt-3">
-            <button
-              onclick="insertQuickQuestion('Quels sont vos tarifs ?')"
-              class="text-xs bg-white/5 hover:bg-primary/20 text-gray-400 hover:text-primary px-3 py-1.5 rounded-full transition-colors"
-            >
-              💰 Tarifs
-            </button>
-            <button
-              onclick="insertQuickQuestion('Quels sont vos délais ?')"
-              class="text-xs bg-white/5 hover:bg-primary/20 text-gray-400 hover:text-primary px-3 py-1.5 rounded-full transition-colors"
-            >
-              ⏱️ Délais
-            </button>
-            <button
-              onclick="insertQuickQuestion('Quels services proposez-vous ?')"
-              class="text-xs bg-white/5 hover:bg-primary/20 text-gray-400 hover:text-primary px-3 py-1.5 rounded-full transition-colors"
-            >
-              🛠️ Services
-            </button>
-            <button
-              onclick="insertQuickQuestion('Avez-vous des exemples de projets ?')"
-              class="text-xs bg-white/5 hover:bg-primary/20 text-gray-400 hover:text-primary px-3 py-1.5 rounded-full transition-colors"
-            >
-              📁 Portfolio
-            </button>
-          </div>
-
-          <p class="text-gray-500 text-xs text-center mt-3">
-            💡 Pour un devis précis, utilisez notre
-            <button
-              onclick="closeChatModal(); router('devis');"
-              class="text-primary hover:underline"
-            >
-              formulaire détaillé
-            </button>
+          <p class="text-gray-500 text-xs mt-2 text-center">
+            💡 Sarah utilise GPT-4 & la base de connaissances MaxSolving
           </p>
         </div>
       </div>

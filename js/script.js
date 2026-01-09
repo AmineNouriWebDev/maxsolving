@@ -277,22 +277,7 @@ function closeProjectModal() {
 let chatHistory = [];
 
 function openChatModal() {
-    const modal = document.getElementById('chat-modal');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-    
-    // Focus sur l'input après un court délai
-    setTimeout(() => {
-        const input = document.getElementById('chat-input');
-        input.focus();
-        
-        // Sur mobile, scroll vers le bas
-        const messagesContainer = document.getElementById('chat-messages');
-        if (messagesContainer) {
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-    }, 100);
+  openSarahModal(); // Utilise maintenant Sarah
 }
 
 function closeChatModal() {
