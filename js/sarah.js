@@ -3,7 +3,7 @@
 
 // ⚠️ CONFIG — Remplacez par vos valeurs
 const SARAH_CONFIG = {
-  geminiApiKey: 'VOTRE_CLE_GEMINI_ICI', // https://aistudio.google.com/app/apikey
+  geminiApiKey: 'AIzaSyD6hgy3LmItQdSp2jd-OnqyYJjDGRy2DOs',
   n8nWebhookUrl: 'VOTRE_WEBHOOK_N8N_ICI', // URL de votre webhook n8n existant
   agencyEmail: 'contact@maxsolving.com',
   systemPrompt: `Tu es Sarah, l'assistante IA de l'agence web MaxSolving. Tu es professionnelle, chaleureuse et concise.
