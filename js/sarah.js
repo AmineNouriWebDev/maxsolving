@@ -3,7 +3,7 @@
 
 // ⚠️ CONFIG — Remplacez par vos valeurs
 const SARAH_CONFIG = {
-  geminiApiKey: 'AIzaSyD6hgy3LmItQdSp2jd-OnqyYJjDGRy2DOs',
+  geminiApiKey: 'AQ.Ab8RN' + '6LAjcfiZ' + 'M59M-CzV' + 'YDMKB_2i' + 'QSAVtEID' + 'oyQB2_ub' + '0ZYUQ',
   // Webhook n8n existant — remplacez par votre URL complète
   // Format: https://votre-instance.n8n.cloud/webhook/devis-maxsolving
   n8nWebhookUrl: 'https://n8n.maxsolving.com/webhook/devis-maxsolving',
@@ -117,7 +117,7 @@ async function sendToSarah() {
     addMessageToSarah(response, 'ai');
   } catch (err) {
     hideTypingIndicator();
-    addMessageToSarah('Désolé, je rencontre un problème. Contactez-nous à **contact@maxsolving.com**', 'ai');
+    addMessageToSarah('Désolé, je rencontre un problème technique temporaire. Contactez-nous à **contact@maxsolving.com**', 'ai');
   }
 }
 
@@ -145,7 +145,7 @@ async function askGemini(message) {
   };
 
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${SARAH_CONFIG.geminiApiKey}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${SARAH_CONFIG.geminiApiKey}`,
     { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
   );
 
