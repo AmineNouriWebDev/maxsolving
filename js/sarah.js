@@ -4,7 +4,9 @@
 // ⚠️ CONFIG — Remplacez par vos valeurs
 const SARAH_CONFIG = {
   geminiApiKey: 'AIzaSyD6hgy3LmItQdSp2jd-OnqyYJjDGRy2DOs',
-  n8nWebhookUrl: 'VOTRE_WEBHOOK_N8N_ICI', // URL de votre webhook n8n existant
+  // Webhook n8n existant — remplacez par votre URL complète
+  // Format: https://votre-instance.n8n.cloud/webhook/devis-maxsolving
+  n8nWebhookUrl: 'https://n8n.maxsolving.com/webhook/devis-maxsolving',
   agencyEmail: 'contact@maxsolving.com',
   systemPrompt: `Tu es Sarah, l'assistante IA de l'agence web MaxSolving. Tu es professionnelle, chaleureuse et concise.
 
@@ -43,6 +45,7 @@ let sarahConversation = [];
 let sarahMode = 'chat'; // 'chat' | 'devis'
 let devisData = {};
 let devisStep = 0;
+let lastDevisEst = {}; // ← Fix PDF: stocke l'estimation en global
 
 // Questions guidées pour le devis
 const DEVIS_STEPS = [
@@ -126,13 +129,14 @@ async function askGemini(message) {
   }
 
   // Construire l'historique pour le contexte
-  const historyContents = sarahConversation.slice(-8).map(m => ({
+  const historyContents = sarahConversation.slice(-6).filter(m => m.text).map(m => ({
     role: m.sender === 'user' ? 'user' : 'model',
-    parts: [{ text: m.text }]
+    parts: [{ text: String(m.text) }]
   }));
 
   const body = {
-    system_instruction: { parts: [{ text: SARAH_CONFIG.systemPrompt }] },
+    // ✔ systemInstruction (camelCase) — était system_instruction (bug fix)
+    systemInstruction: { parts: [{ text: SARAH_CONFIG.systemPrompt }] },
     contents: [
       ...historyContents,
       { role: 'user', parts: [{ text: message }] }
@@ -141,11 +145,15 @@ async function askGemini(message) {
   };
 
   const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${SARAH_CONFIG.geminiApiKey}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${SARAH_CONFIG.geminiApiKey}`,
     { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
   );
 
-  if (!res.ok) throw new Error('Gemini API error');
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    console.error('[Sarah/Gemini] Erreur:', res.status, errData);
+    throw new Error(`Gemini ${res.status}`);
+  }
   const data = await res.json();
   return data.candidates?.[0]?.content?.parts?.[0]?.text || 'Je suis temporairement indisponible.';
 }
@@ -199,6 +207,7 @@ async function generateAndSendDevis() {
     'Refonte de site':       { prix: '399€ - 1 999€',   delai: '7 - 20 jours' }
   };
   const est = estimates[devisData.type] || { prix: 'Sur devis', delai: 'À définir' };
+  lastDevisEst = est; // ← Fix PDF: stocke en global pour downloadDevisPDF()
 
   const devisHtml = buildDevisHTML(est);
   const devisRef = 'MS-' + Date.now().toString().slice(-6);
@@ -298,8 +307,8 @@ function downloadDevisPDF(ref) {
       ['Budget client', devisData.budget],
       ['Délai souhaité', devisData.delai],
       ['', ''],
-      ['Estimation prix', est?.prix || ''],
-      ['Délai estimé', est?.delai || ''],
+      ['Estimation prix', lastDevisEst?.prix || ''],
+      ['Délai estimé', lastDevisEst?.delai || ''],
     ];
     let y = 55;
     lines.forEach(([k, v]) => {
