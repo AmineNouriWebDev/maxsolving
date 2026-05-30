@@ -109,7 +109,7 @@ async function sendToSarah() {
     } else {
       // Détection intention devis
       if (/devis|tarif|prix|combien|estim/i.test(message)) {
-        const wantsDevis = await askGemini(message + '\n\nPropose à lütilisateur de lui générer un devis personnalisé automatiquement en tapant "devis".');
+        const wantsDevis = await askGemini(message + '\n\nPropose à l'utilisateur de lui générer un devis personnalisé automatiquement en tapant "devis".');
         response = wantsDevis;
       } else {
         response = await askGemini(message);
