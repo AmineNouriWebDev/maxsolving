@@ -166,6 +166,7 @@ class PortfolioRenderer {
       all: this.projects.length,
       wordpress: this.projects.filter(p => p.category.includes('wordpress')).length,
       html: this.projects.filter(p => p.category.includes('html')).length,
+      php: this.projects.filter(p => p.category.includes('php')).length,
       shopify: this.projects.filter(p => p.category.includes('shopify')).length,
       nextjs: this.projects.filter(p => p.category.includes('nextjs')).length
     };

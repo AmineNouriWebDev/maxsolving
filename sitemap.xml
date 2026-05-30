@@ -6,7 +6,7 @@
   <!-- Page d'accueil - Priorité maximale -->
   <url>
     <loc>https://maxsolving.com/</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -18,23 +18,55 @@
   <!-- Page Services -->
   <url>
     <loc>https://maxsolving.com/#services</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Page Portfolio -->
+  <!-- Page Portfolio - mise à jour avec 20+ projets -->
   <url>
     <loc>https://maxsolving.com/#portfolio</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/nyxmainecoon/thumbnail.png</image:loc>
+      <image:title>NYX Maine Coon - Élevage chats Maine Coon</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/technoplus/thumbnail.png</image:loc>
+      <image:title>Technoplus - Solutions IT</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/offipro/thumbnail.png</image:loc>
+      <image:title>Offipro - Solutions bureautiques</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/pensionchiens/thumbnail.png</image:loc>
+      <image:title>Pension Chiens Belgique</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/kimotors/thumbnail.png</image:loc>
+      <image:title>KI-Motors - Concessionnaire auto Tunisie</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/domid/thumbnail.png</image:loc>
+      <image:title>Domi-D - Site vitrine personnel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/excelduzero/thumbnail.png</image:loc>
+      <image:title>Excel Du Zéro - Plateforme formation</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/efcvc/thumbnail.png</image:loc>
+      <image:title>EFCVC - Climatisation industrielle</image:title>
+    </image:image>
   </url>
 
   <!-- Page À Propos -->
   <url>
     <loc>https://maxsolving.com/#about</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -42,7 +74,7 @@
   <!-- Page Contact -->
   <url>
     <loc>https://maxsolving.com/#contact</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -50,15 +82,15 @@
   <!-- Page Devis -->
   <url>
     <loc>https://maxsolving.com/#devis</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Blog (si disponible) -->
+  <!-- Blog -->
   <url>
     <loc>https://blog.maxsolving.com/</loc>
-    <lastmod>2025-12-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
