@@ -1,6 +1,30 @@
 // data.js - Données des projets
 const projectsData = [
-  // NYX MAINE COON (En premier)
+  // EXCEL DU ZERO (En premier)
+  {
+    id: 'excelduzero',
+    title: 'EXCEL DU ZÉRO',
+    subtitle: 'Plateforme de formation Excel en ligne',
+    description: 'Plateforme e-learning complète pour apprendre Excel du débutant à l\'expert.',
+    technologies: ['Next.js', 'Supabase', 'Tailwind CSS'],
+    category: ['nextjs', 'application'],
+    featured: false,
+    imageDesktop: 'img/projects/excelduzero/thumbnail.png',
+    imageMobile: 'img/projects/excelduzero/thumbnail.png',
+    link: 'https://excelduzero.com',
+    badge: '📊 E-LEARNING',
+    badgeColor: 'green-500',
+    techColor: 'green-500',
+    modalData: {
+      title: 'EXCEL DU ZÉRO - Formation Excel',
+      description: 'Plateforme e-learning moderne construite avec Next.js et Supabase pour apprendre Excel du niveau débutant à l\'expertise.',
+      technologies: ['Next.js', 'Supabase', 'HTML5', 'Tailwind CSS'],
+      features: ['Cours interactifs', 'Gestion utilisateurs Supabase', 'Contenu premium verrouillé', 'Tableau de bord apprenant'],
+      link: 'https://excelduzero.com',
+      results: 'Plateforme e-learning scalable avec accès premium'
+    }
+  },
+  // NYX MAINE COON
   {
     id: 'nyxmainecoon',
     title: 'NYX MAINE COON',
@@ -24,7 +48,7 @@ const projectsData = [
       results: 'Visibilité internationale pour l\'élevage'
     }
   },
-  // offipro (En deuxième)
+  // offipro
   {
     id: 'offipro',
     title: 'OFFIPRO',
@@ -48,12 +72,12 @@ const projectsData = [
       results: 'Augmentation des ventes d\'équipements et fidélisation des abonnés.'
     }
   },
-  // actumoto (En troisième)
+  // actumoto (Modifié - comparateur motos tunisie)
   {
     id: 'actumoto',
     title: 'ACTUMOTO',
-    subtitle: 'Concessionnaire motos',
-    description: 'Site vitrine pour concessionnaire de motos avec galerie et contact.',
+    subtitle: 'Comparateur de motos en Tunisie',
+    description: 'ACTUMOTO est un site comparateur des motos en tunisie avec galerie et contact.',
     technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
     category: ['html'],
     featured: true,
@@ -64,39 +88,38 @@ const projectsData = [
     badgeColor: 'red-500',
     techColor: 'red-500',
     modalData: {
-      title: 'ACTUMOTO - Concessionnaire Moto',
-      description: 'Site vitrine moderne pour concessionnaire de motos avec galerie interactive et système de contact avancé.',
+      title: 'ACTUMOTO - Comparateur Moto',
+      description: 'ACTUMOTO est un site comparateur des motos en tunisie avec galerie interactive et système de contact avancé.',
       technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
-      features: ['Galerie interactive', 'Formulaire de contact', 'Présentation des modèles', 'Localisation'],
+      features: ['Galerie interactive', 'Formulaire de contact', 'Comparateur de modèles', 'Localisation'],
       link: 'https://actumoto.tn',
       results: 'Augmentation des demandes de contact de 150%'
     }
   },
-  // KI-MOTORS (En quatrième)
+  // KI-MOTORS (Modifié - concessionnaire motos KIM)
   {
     id: 'kimotors',
     title: 'KI-MOTORS',
-    subtitle: 'Concessionnaire automobile en Tunisie',
-    description: 'Site vitrine pour concessionnaire automobile avec catalogue et contact.',
+    subtitle: 'Concessionnaire officiel motos KIM',
+    description: 'KI-MOTORS est un concessionaire officiel des motos marque kim avec catalogue et contact.',
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS'],
     category: ['html'],
     featured: false,
     imageDesktop: 'img/projects/kimotors/thumbnail.png',
     imageMobile: 'img/projects/kimotors/thumbnail.png',
     link: 'https://ki-motors.tn/',
-    badge: '🚗 AUTO',
+    badge: '🏍️ MOTO',
     badgeColor: 'red-600',
     techColor: 'red-500',
     modalData: {
-      title: 'KI-MOTORS - Concessionnaire Auto Tunisie',
-      description: 'Site vitrine élégant pour un concessionnaire automobile tunisien. Catalogue véhicules, galerie et formulaire de contact.',
+      title: 'KI-MOTORS - Concessionnaire KIM',
+      description: 'KI-MOTORS est un concessionaire officiel des motos marque kim. Catalogue véhicules, galerie et formulaire de contact.',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS'],
       features: ['Catalogue véhicules', 'Galerie photos', 'Formulaire de contact', 'Design responsive'],
       link: 'https://ki-motors.tn/',
       results: 'Visibilité en ligne du concessionnaire améliorée'
     }
   },
-  // EFCVC (Modifié - pas ecommerce, artisan frigoriste)
   {
     id: 'efcvc',
     title: 'EFCVC',
@@ -120,7 +143,6 @@ const projectsData = [
       results: 'Génération de leads qualifiés pour installations industrielles.'
     }
   },
-  // VITA CAST (Modifié - plâtre médical en résine américain & orthopédie)
   {
     id: 'vita-cast',
     title: 'VITA CAST',
@@ -352,29 +374,6 @@ const projectsData = [
     }
   },
   {
-    id: 'excelduzero',
-    title: 'EXCEL DU ZÉRO',
-    subtitle: 'Plateforme de formation Excel en ligne',
-    description: 'Plateforme e-learning complète pour apprendre Excel du débutant à l\'expert.',
-    technologies: ['Next.js', 'Supabase', 'Tailwind CSS'],
-    category: ['nextjs', 'application'],
-    featured: false,
-    imageDesktop: 'img/projects/excelduzero/thumbnail.png',
-    imageMobile: 'img/projects/excelduzero/thumbnail.png',
-    link: 'https://excelduzero.com',
-    badge: '📊 E-LEARNING',
-    badgeColor: 'green-500',
-    techColor: 'green-500',
-    modalData: {
-      title: 'EXCEL DU ZÉRO - Formation Excel',
-      description: 'Plateforme e-learning moderne construite avec Next.js et Supabase pour apprendre Excel du niveau débutant à l\'expertise.',
-      technologies: ['Next.js', 'Supabase', 'HTML5', 'Tailwind CSS'],
-      features: ['Cours interactifs', 'Gestion utilisateurs Supabase', 'Contenu premium verrouillé', 'Tableau de bord apprenant'],
-      link: 'https://excelduzero.com',
-      results: 'Plateforme e-learning scalable avec accès premium'
-    }
-  },
-  {
     id: 'voyantemedium',
     title: 'VOYANTE BRUXELLES',
     subtitle: 'Voyance & consultation en ligne',
@@ -420,7 +419,6 @@ const projectsData = [
       results: 'Augmentation des appels d\'urgence'
     }
   },
-  // technoplus (Modifié - e-commerce électronique avec Bootstrap)
   {
     id: 'technoplus',
     title: 'TECHNOPLUS',

@@ -106,7 +106,7 @@ class PortfolioRenderer {
           </div>
           
           <!-- Contenu -->
-          <div class="p-6 flex-grow">
+          <div class="p-6 flex-grow flex flex-col">
             <div class="flex justify-between items-start mb-4">
               <div>
                 <h3 class="text-xl font-bold text-white font-tech">
