@@ -287,8 +287,8 @@ function injectDevisCard(est, ref) {
 
 function downloadDevisPDF(ref) {
   // Utilise jsPDF si disponible, sinon fenêtre d'impression
-  if (typeof jspdf !== 'undefined' || typeof jsPDF !== 'undefined') {
-    const { jsPDF } = window.jspdf || window;
+  if (window.jspdf && window.jspdf.jsPDF) {
+    const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     doc.setFont('helvetica');
     doc.setFontSize(20);
@@ -339,25 +339,19 @@ async function sendToN8n(est, ref) {
     return;
   }
 
+  // Format the payload to match exactly what the existing n8n workflow expects ($json.body)
   const payload = {
-    source: 'Sarah AI - MaxSolving',
-    reference: ref,
-    date: new Date().toLocaleString('fr-FR'),
-    client: {
-      prenom: devisData.prenom,
-      email: devisData.email
-    },
-    projet: {
-      type: devisData.type,
-      description: devisData.details,
-      budget: devisData.budget,
-      delai: devisData.delai
-    },
-    estimation: {
-      prix: est.prix,
-      delai: est.delai
-    },
-    conversation: sarahConversation.slice(-20).map(m => `[${m.sender === 'user' ? 'Client' : 'Sarah'}] ${m.text}`).join('\n')
+    nom: devisData.prenom || '',
+    email: devisData.email || '',
+    telephone: '',
+    entreprise: '',
+    modele_service_label: 'Devis Sarah IA',
+    types_projet: [devisData.type || 'Non spécifié'],
+    budget: devisData.budget || 'Non spécifié',
+    message: `Description: ${devisData.details || ''}\n\nDélai souhaité: ${devisData.delai || ''}\n\n[Estimation Sarah IA]\nPrix: ${est.prix}\nDélai: ${est.delai}\nRéférence: #${ref}`,
+    source: 'sarah-ia',
+    date_soumission: new Date().toLocaleString('fr-FR'),
+    url_page: window.location.href
   };
 
   try {
