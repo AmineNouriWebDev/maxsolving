@@ -1,12 +1,14 @@
 // ===== SARAH AI ASSISTANT — MaxSolving =====
 // Gemini Flash + Mode Devis guidé + n8n SMTP + PDF
 
-// ⚠️ CONFIG — Remplacez par vos valeurs
+// ⚠️ CONFIG
 const SARAH_CONFIG = {
   geminiApiKey: 'AQ.Ab8RN' + '6LAjcfiZ' + 'M59M-CzV' + 'YDMKB_2i' + 'QSAVtEID' + 'oyQB2_ub' + '0ZYUQ',
-  // Webhook n8n existant — remplacez par votre URL complète
-  // Format: https://votre-instance.n8n.cloud/webhook/devis-maxsolving
-  n8nWebhookUrl: 'https://n8n.maxsolving.com/webhook/devis-maxsolving',
+  // Modèles Gemini — lite en principal (stable), flash en fallback
+  geminiModel: 'gemini-2.5-flash-lite',
+  geminiModelFallback: 'gemini-2.5-flash',
+  // Webhook n8n (production URL)
+  n8nWebhookUrl: 'https://n8n.deposark.com/webhook/devis-maxsolving',
   agencyEmail: 'contact@maxsolving.com',
   systemPrompt: `Tu es Sarah, l'assistante IA de l'agence web MaxSolving. Tu es professionnelle, chaleureuse et concise.
 
@@ -135,7 +137,6 @@ async function askGemini(message) {
   }));
 
   const body = {
-    // ✔ systemInstruction (camelCase) — était system_instruction (bug fix)
     systemInstruction: { parts: [{ text: SARAH_CONFIG.systemPrompt }] },
     contents: [
       ...historyContents,
@@ -144,18 +145,26 @@ async function askGemini(message) {
     generationConfig: { maxOutputTokens: 400, temperature: 0.7 }
   };
 
-  const res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${SARAH_CONFIG.geminiApiKey}`,
-    { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
-  );
-
-  if (!res.ok) {
-    const errData = await res.json().catch(() => ({}));
-    console.error('[Sarah/Gemini] Erreur:', res.status, errData);
-    throw new Error(`Gemini ${res.status}`);
+  // Essaie le modèle principal, puis le fallback si 503/overload
+  const models = [SARAH_CONFIG.geminiModel, SARAH_CONFIG.geminiModelFallback];
+  for (const model of models) {
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${SARAH_CONFIG.geminiApiKey}`,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
+    );
+    if (res.status === 503 || res.status === 429) {
+      console.warn(`[Sarah/Gemini] ${model} indisponible (${res.status}), essai du fallback...`);
+      continue; // essaie le modèle suivant
+    }
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}));
+      console.error('[Sarah/Gemini] Erreur:', res.status, errData);
+      throw new Error(`Gemini ${res.status}`);
+    }
+    const data = await res.json();
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || 'Je suis temporairement indisponible.';
   }
-  const data = await res.json();
-  return data.candidates?.[0]?.content?.parts?.[0]?.text || 'Je suis temporairement indisponible.';
+  throw new Error('Tous les modèles Gemini sont indisponibles');
 }
 
 // ====================== MODE DEVIS GUIDÉ ======================
