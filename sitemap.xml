@@ -23,7 +23,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Page Portfolio - mise à jour avec 20+ projets -->
+  <!-- Page Portfolio - Indexation de tous les projets de l'agence -->
   <url>
     <loc>https://maxsolving.com/#portfolio</loc>
     <lastmod>2026-05-30</lastmod>
@@ -34,32 +34,80 @@
       <image:title>NYX Maine Coon - Élevage chats Maine Coon</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://maxsolving.com/img/projects/technoplus/thumbnail.png</image:loc>
-      <image:title>Technoplus - Solutions IT</image:title>
-    </image:image>
-    <image:image>
       <image:loc>https://maxsolving.com/img/projects/offipro/thumbnail.png</image:loc>
-      <image:title>Offipro - Solutions bureautiques</image:title>
+      <image:title>Offipro - E-commerce produits électroniques</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://maxsolving.com/img/projects/pensionchiens/thumbnail.png</image:loc>
-      <image:title>Pension Chiens Belgique</image:title>
+      <image:loc>https://maxsolving.com/img/projects/actumoto/thumbnail.png</image:loc>
+      <image:title>Actumoto - Concessionnaire motos</image:title>
     </image:image>
     <image:image>
       <image:loc>https://maxsolving.com/img/projects/kimotors/thumbnail.png</image:loc>
       <image:title>KI-Motors - Concessionnaire auto Tunisie</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://maxsolving.com/img/projects/efcvc/thumbnail.png</image:loc>
+      <image:title>EFCVC - Artisan frigoriste &amp; Climatisation</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/vitacast/thumbnail.png</image:loc>
+      <image:title>Vita Cast - Plâtre médical &amp; Orthopédie</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/workman/thumbnail.png</image:loc>
+      <image:title>Workman - Vêtements professionnels</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/adenium/thumbnail.png</image:loc>
+      <image:title>Adenium - Entreprise de services</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/zitouna/thumbnail.png</image:loc>
+      <image:title>Zitouna Gourmet - Restaurant</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/directSerrure/thumbnail.png</image:loc>
+      <image:title>Direct Serrure - Sécurité &amp; Serrures</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/bfpetfood/thumbnail.png</image:loc>
+      <image:title>BF Pet Food - Accessoires Animaux</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/kilowatt/thumbnail.png</image:loc>
+      <image:title>Kilowatt - Faisceaux Électriques</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/andreBpo/thumbnail.png</image:loc>
+      <image:title>Andre BPO - Business Process Outsourcing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/amineNouriPortfolio/thumbnail.png</image:loc>
+      <image:title>Amine Nouri - Développeur Web Freelance</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://maxsolving.com/img/projects/domid/thumbnail.png</image:loc>
-      <image:title>Domi-D - Site vitrine personnel</image:title>
+      <image:title>Domi-D - Site vitrine personnel &amp; Design</image:title>
     </image:image>
     <image:image>
       <image:loc>https://maxsolving.com/img/projects/excelduzero/thumbnail.png</image:loc>
-      <image:title>Excel Du Zéro - Plateforme formation</image:title>
+      <image:title>Excel Du Zéro - Formation Excel</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://maxsolving.com/img/projects/efcvc/thumbnail.png</image:loc>
-      <image:title>EFCVC - Climatisation industrielle</image:title>
+      <image:loc>https://maxsolving.com/img/projects/voyante/thumbnail.png</image:loc>
+      <image:title>Voyante Bruxelles - Consultation voyance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/artisanSerrurier/thumbnail.png</image:loc>
+      <image:title>Artisan Serrurier Voltaire - Paris 11</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/technoplus/thumbnail.png</image:loc>
+      <image:title>Technoplus - E-commerce High-Tech</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://maxsolving.com/img/projects/pensionchiens/thumbnail.png</image:loc>
+      <image:title>Pension Chiens - Garde canine Belgique</image:title>
     </image:image>
   </url>
 

@@ -1,51 +1,54 @@
 // data.js - Données des projets
 const projectsData = [
+  // NYX MAINE COON (En premier)
   {
-    id: 'efcvc',
-    title: 'EFCVC',
-    subtitle: 'E-commerce climatisation industrielle',
-    description: 'Site e-commerce complet pour expert en réfrigération et froid industriel.',
-    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
-    category: ['html', 'premium'],
+    id: 'nyxmainecoon',
+    title: 'NYX MAINE COON',
+    subtitle: 'Élevage de chats Maine Coon',
+    description: 'Site vitrine pour élevage de chats Maine Coon avec galerie et formulaire d\'adoption.',
+    technologies: ['PHP', 'HTML5', 'CSS3', 'Tailwind CSS'],
+    category: ['html', 'php'],
     featured: true,
-    imageDesktop: 'img/projects/efcvc/thumbnail.png',
-    imageMobile: 'img/projects/efcvc/thumbnail.png',
-    link: 'https://efcvc.com',
-    badge: '⭐ PREMIUM',
-    badgeColor: 'primary',
-    techColor: 'primary',
+    imageDesktop: 'img/projects/nyxmainecoon/thumbnail.png',
+    imageMobile: 'img/projects/nyxmainecoon/thumbnail.png',
+    link: 'https://nyxcooncattery.com/',
+    badge: '🐱 ÉLEVAGE',
+    badgeColor: 'amber-500',
+    techColor: 'amber-500',
     modalData: {
-      title: 'EFCVC - Climatisation Industrielle',
-      description: 'Site e-commerce complet pour un expert en réfrigération et froid industriel. Design technique et épuré avec une interface utilisateur optimisée pour la conversion.',
-      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'SEO Avancé'],
-      features: ['Catalogue produits détaillé', 'Panier et paiement sécurisé', 'Formulaire de devis en ligne', 'Optimisation SEO complète'],
-      link: 'https://efcvc.com',
-      results: '+200% de trafic en 3 mois, conversion ×2.5'
+      title: 'NYX MAINE COON - Cattery',
+      description: 'Site vitrine pour un élevage professionnel de chats Maine Coon. Galerie des chatons disponibles, présentation de l\'élevage et formulaire de contact pour les adoptants.',
+      technologies: ['PHP', 'HTML5', 'CSS3', 'Tailwind CSS'],
+      features: ['Galerie chatons disponibles', 'Présentation élevage', 'Formulaire adoption', 'Design chaleureux'],
+      link: 'https://nyxcooncattery.com/',
+      results: 'Visibilité internationale pour l\'élevage'
     }
   },
+  // offipro (En deuxième)
   {
-    id: 'vita-cast',
-    title: 'VITA CAST',
-    subtitle: 'Clinique médicale - Site vitrine',
-    description: 'Site vitrine pour clinique médicale avec animations et design moderne.',
-    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'AOS'],
-    category: ['html'],
+    id: 'offipro',
+    title: 'OFFIPRO',
+    subtitle: 'E-commerce de produits électroniques',
+    description: 'Boutique en ligne moderne de vente de matériel informatique et électronique (smartphones, PC, tablettes, imprimantes et abonnements sharing).',
+    technologies: ['PHP', 'JavaScript', 'HTML5', 'Tailwind CSS'],
+    category: ['html', 'php', 'ecommerce'],
     featured: false,
-    imageDesktop: 'img/projects/vitacast/thumbnail.png',
-    imageMobile: 'img/projects/vitacast/thumbnail.png',
-    link: 'https://vita-cast.com.tn',
-    badge: '🚀 RÉCENT',
-    badgeColor: 'green-500',
-    techColor: 'blue-500',
+    imageDesktop: 'img/projects/offipro/thumbnail.png',
+    imageMobile: 'img/projects/offipro/thumbnail.png',
+    link: 'https://offipro.net/',
+    badge: '🗂️ BUREAUTIQUE',
+    badgeColor: 'indigo-500',
+    techColor: 'indigo-400',
     modalData: {
-      title: 'VITA CAST - Clinique Médicale',
-      description: 'Site vitrine moderne pour une clinique médicale avec présentation des services, équipe médicale et prise de rendez-vous en ligne.',
-      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'AOS Animations'],
-      features: ['Présentation des services', 'Équipe médicale', 'Formulaire de rendez-vous', 'Blog médical'],
-      link: 'https://vita-cast.com.tn',
-      results: 'Réservations en ligne multipliées par 3'
+      title: 'OFFIPRO - E-commerce Électronique & Multimédia',
+      description: 'Plateforme e-commerce spécialisée dans la vente d\'équipements technologiques et multimédias : ordinateurs, smartphones, tablettes, imprimantes et abonnements de partage (sharing).',
+      technologies: ['PHP', 'JavaScript', 'HTML5', 'Tailwind CSS', 'Paiement en ligne'],
+      features: ['Catalogue produits complet', 'Panier et commande en ligne', 'Gestion des stocks & abonnements', 'SEO technique et performant'],
+      link: 'https://offipro.net/',
+      results: 'Augmentation des ventes d\'équipements et fidélisation des abonnés.'
     }
   },
+  // actumoto (En troisième)
   {
     id: 'actumoto',
     title: 'ACTUMOTO',
@@ -67,6 +70,78 @@ const projectsData = [
       features: ['Galerie interactive', 'Formulaire de contact', 'Présentation des modèles', 'Localisation'],
       link: 'https://actumoto.tn',
       results: 'Augmentation des demandes de contact de 150%'
+    }
+  },
+  // KI-MOTORS (En quatrième)
+  {
+    id: 'kimotors',
+    title: 'KI-MOTORS',
+    subtitle: 'Concessionnaire automobile en Tunisie',
+    description: 'Site vitrine pour concessionnaire automobile avec catalogue et contact.',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS'],
+    category: ['html'],
+    featured: false,
+    imageDesktop: 'img/projects/kimotors/thumbnail.png',
+    imageMobile: 'img/projects/kimotors/thumbnail.png',
+    link: 'https://ki-motors.tn/',
+    badge: '🚗 AUTO',
+    badgeColor: 'red-600',
+    techColor: 'red-500',
+    modalData: {
+      title: 'KI-MOTORS - Concessionnaire Auto Tunisie',
+      description: 'Site vitrine élégant pour un concessionnaire automobile tunisien. Catalogue véhicules, galerie et formulaire de contact.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS'],
+      features: ['Catalogue véhicules', 'Galerie photos', 'Formulaire de contact', 'Design responsive'],
+      link: 'https://ki-motors.tn/',
+      results: 'Visibilité en ligne du concessionnaire améliorée'
+    }
+  },
+  // EFCVC (Modifié - pas ecommerce, artisan frigoriste)
+  {
+    id: 'efcvc',
+    title: 'EFCVC',
+    subtitle: 'Artisan frigoriste & climatisation industrielle',
+    description: 'Site vitrine professionnel pour artisan frigoriste spécialisé en réfrigération, climatisation et froid industriel.',
+    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript'],
+    category: ['html', 'premium'],
+    featured: true,
+    imageDesktop: 'img/projects/efcvc/thumbnail.png',
+    imageMobile: 'img/projects/efcvc/thumbnail.png',
+    link: 'https://efcvc.com',
+    badge: '⭐ PREMIUM',
+    badgeColor: 'primary',
+    techColor: 'primary',
+    modalData: {
+      title: 'EFCVC - Frigoriste & Climatisation',
+      description: 'Site vitrine professionnel présentant les services d\'un artisan frigoriste expert en réfrigération et froid industriel, incluant une vitrine de produits et demande de devis.',
+      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'SEO Avancé'],
+      features: ['Présentation des prestations de froid', 'Formulaire de demande de devis', 'Vitrine de climatiseurs et pièces', 'Optimisation SEO complète'],
+      link: 'https://efcvc.com',
+      results: 'Génération de leads qualifiés pour installations industrielles.'
+    }
+  },
+  // VITA CAST (Modifié - plâtre médical en résine américain & orthopédie)
+  {
+    id: 'vita-cast',
+    title: 'VITA CAST',
+    subtitle: 'Fabricant de plâtre médical & orthopédie',
+    description: 'VITA CAST se spécialise dans la production de plâtre médical en résine américain et de produits orthopédiques de haute qualité.',
+    technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'AOS'],
+    category: ['html'],
+    featured: false,
+    imageDesktop: 'img/projects/vitacast/thumbnail.png',
+    imageMobile: 'img/projects/vitacast/thumbnail.png',
+    link: 'https://vita-cast.com.tn',
+    badge: '🚀 RÉCENT',
+    badgeColor: 'green-500',
+    techColor: 'blue-500',
+    modalData: {
+      title: 'VITA CAST - Plâtre Médical & Orthopédie',
+      description: 'VITA CAST se spécialise dans la production de plâtre médical en résine américain et de produits orthopédiques de haute qualité.',
+      technologies: ['HTML5', 'Tailwind CSS', 'JavaScript', 'AOS Animations'],
+      features: ['Catalogue de produits orthopédiques', 'Présentation des matériaux en résine américaine', 'Formulaire de demande d\'échantillons', 'Design responsive optimisé'],
+      link: 'https://vita-cast.com.tn',
+      results: 'Notoriété accrue auprès des cliniques et orthopédistes partenaires.'
     }
   },
   {
@@ -345,37 +420,14 @@ const projectsData = [
       results: 'Augmentation des appels d\'urgence'
     }
   },
-  // ===================== 5 NOUVEAUX PROJETS =====================
-  {
-    id: 'nyxmainecoon',
-    title: 'NYX MAINE COON',
-    subtitle: 'Élevage de chats Maine Coon',
-    description: 'Site vitrine pour élevage de chats Maine Coon avec galerie et formulaire d\'adoption.',
-    technologies: ['PHP', 'HTML5', 'CSS3', 'Tailwind CSS'],
-    category: ['html', 'php'],
-    featured: true,
-    imageDesktop: 'img/projects/nyxmainecoon/thumbnail.png',
-    imageMobile: 'img/projects/nyxmainecoon/thumbnail.png',
-    link: 'https://nyxcooncattery.com/',
-    badge: '🐱 ÉLEVAGE',
-    badgeColor: 'amber-500',
-    techColor: 'amber-500',
-    modalData: {
-      title: 'NYX MAINE COON - Cattery',
-      description: 'Site vitrine pour un élevage professionnel de chats Maine Coon. Galerie des chatons disponibles, présentation de l\'élevage et formulaire de contact pour les adoptants.',
-      technologies: ['PHP', 'HTML5', 'CSS3', 'Tailwind CSS'],
-      features: ['Galerie chatons disponibles', 'Présentation élevage', 'Formulaire adoption', 'Design chaleureux'],
-      link: 'https://nyxcooncattery.com/',
-      results: 'Visibilité internationale pour l\'élevage'
-    }
-  },
+  // technoplus (Modifié - e-commerce électronique avec Bootstrap)
   {
     id: 'technoplus',
     title: 'TECHNOPLUS',
-    subtitle: 'Solutions IT & technologiques',
-    description: 'Site corporate pour entreprise de solutions informatiques et technologiques.',
+    subtitle: 'E-commerce multimédia & informatique',
+    description: 'Site e-commerce complet pour la vente d\'appareils électroniques : ordinateurs, tablettes, smartphones, imprimantes et services d\'abonnements sharing.',
     technologies: ['PHP', 'Bootstrap', 'HTML5', 'CSS3'],
-    category: ['html', 'php'],
+    category: ['html', 'php', 'ecommerce'],
     featured: false,
     imageDesktop: 'img/projects/technoplus/thumbnail.png',
     imageMobile: 'img/projects/technoplus/thumbnail.png',
@@ -384,35 +436,12 @@ const projectsData = [
     badgeColor: 'cyan-500',
     techColor: 'cyan-500',
     modalData: {
-      title: 'TECHNOPLUS - Solutions IT',
-      description: 'Site corporate moderne pour une entreprise spécialisée dans les solutions informatiques et technologiques. Design professionnel Bootstrap.',
-      technologies: ['PHP', 'Bootstrap', 'HTML5', 'CSS3'],
-      features: ['Présentation services IT', 'Portfolio projets tech', 'Design Bootstrap responsive', 'Formulaire contact'],
+      title: 'TECHNOPLUS - E-commerce High-Tech',
+      description: 'Site e-commerce de vente de tout type de matériel informatique et d\'électronique grand public (smartphones, PC, tablettes, périphériques et abonnements de partage).',
+      technologies: ['PHP', 'Bootstrap', 'HTML5', 'CSS3', 'Panier d\'achat'],
+      features: ['Fiches produits interactives', 'Tunnel de commande fluide', 'Gestion d\'abonnements sharing', 'Design responsive Bootstrap'],
       link: 'https://technoplus.io/',
-      results: 'Image de marque professionnelle renforcée'
-    }
-  },
-  {
-    id: 'offipro',
-    title: 'OFFIPRO',
-    subtitle: 'Solutions bureautiques professionnelles',
-    description: 'Plateforme de solutions bureautiques pour professionnels et entreprises.',
-    technologies: ['PHP', 'JavaScript', 'HTML5', 'Tailwind CSS', 'Bootstrap'],
-    category: ['html', 'php'],
-    featured: false,
-    imageDesktop: 'img/projects/offipro/thumbnail.png',
-    imageMobile: 'img/projects/offipro/thumbnail.png',
-    link: 'https://offipro.net/',
-    badge: '🗂️ BUREAUTIQUE',
-    badgeColor: 'indigo-500',
-    techColor: 'indigo-400',
-    modalData: {
-      title: 'OFFIPRO - Solutions Bureautiques',
-      description: 'Plateforme complète de solutions bureautiques pour professionnels et entreprises. Interface moderne combinant Tailwind et Bootstrap.',
-      technologies: ['PHP', 'JavaScript', 'HTML5', 'Tailwind CSS', 'Bootstrap'],
-      features: ['Catalogue produits', 'Espace client', 'Design hybride Tailwind/Bootstrap', 'SEO optimisé'],
-      link: 'https://offipro.net/',
-      results: 'Conversion prospects en clients améliorée'
+      results: 'Canal de vente en ligne performant et gestion simplifiée des commandes.'
     }
   },
   {
@@ -436,29 +465,6 @@ const projectsData = [
       features: ['Réservation en ligne', 'Conformité RGPD Complianz', 'SEO Rank Math optimisé', 'Galerie chiens pensionnaires'],
       link: 'https://pension-chiens.be/',
       results: 'Réservations en ligne et visibilité locale Belgique'
-    }
-  },
-  {
-    id: 'kimotors',
-    title: 'KI-MOTORS',
-    subtitle: 'Concessionnaire automobile en Tunisie',
-    description: 'Site vitrine pour concessionnaire automobile avec catalogue et contact.',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS'],
-    category: ['html'],
-    featured: false,
-    imageDesktop: 'img/projects/kimotors/thumbnail.png',
-    imageMobile: 'img/projects/kimotors/thumbnail.png',
-    link: 'https://ki-motors.tn/',
-    badge: '🚗 AUTO',
-    badgeColor: 'red-600',
-    techColor: 'red-500',
-    modalData: {
-      title: 'KI-MOTORS - Concessionnaire Auto Tunisie',
-      description: 'Site vitrine élégant pour un concessionnaire automobile tunisien. Catalogue véhicules, galerie et formulaire de contact.',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Tailwind CSS'],
-      features: ['Catalogue véhicules', 'Galerie photos', 'Formulaire de contact', 'Design responsive'],
-      link: 'https://ki-motors.tn/',
-      results: 'Visibilité en ligne du concessionnaire améliorée'
     }
   },
 ];
